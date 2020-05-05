@@ -62,7 +62,9 @@ char* evaluate(char *b){
 			}
 			if(*(b + index) == '1'){
 				z = count_live_neighbors(b, i, j);
-				if(z == 2)
+				if((z == 2) || (z == 3)){
+					//LIVES
+				}
 			}
 				}
 			}
