@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "gol.h"
-//#include "gol.c"
+#include "gol.c"
 
 int count_alive_neighbors(char *b, int x, int y)
 {
