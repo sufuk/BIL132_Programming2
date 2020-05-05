@@ -1,16 +1,9 @@
 /*
-	Student name :
-	Student ID   :
+	Student name : Semih Ufuk Güler
+	Student ID   : 200011674
 */
 
-/*
-C   N                 new C
-   1   0,1             ->  0  # Lonely
-   1   4,5,6,7,8       ->  0  # Overcrowded
-   1   2,3             ->  1  # Lives
-   0   3               ->  1  # It takes three to give birth!
-   0   0,1,2,4,5,6,7,8 ->  0  # Barren
-	 */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "gol.h"
