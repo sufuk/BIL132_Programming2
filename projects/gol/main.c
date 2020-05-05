@@ -56,19 +56,8 @@ char* evaluate(char *b){
 	for(i=0;i<N;i++){
 		for(j=0;j<M;j++){
 			index = ((i*M) + j);
-			if (*(b + index) == '0'){
 				z = count_alive_neighbors(b, j, i);
-				if(z == 3){
-					//GIVE BIRTH !!
-					*(n + index) = '1';
-					}
-				else{
-					//STILL DEAD
-					*(n + index) = '0';
-				}
-				}
-			else if(*(b + index) == '1'){
-				z = count_alive_neighbors(b, j, i);
+			 if(*(b + index) == '1'){
 				if((z == 2) || (z == 3)){
 					//LIVES
 						*(n + index) = '1';
@@ -78,6 +67,18 @@ char* evaluate(char *b){
 					*(n + index) = '0';
 				}
 			}
+			else if (*(b + index) == '0'){
+
+				if(z == 3){
+					//GIVE BIRTH !!
+					*(n + index) = '1';
+					}
+				else{
+					//STILL DEAD
+					*(n + index) = '0';
+				}
+				}
+
 				}
 			}
 	return n;
