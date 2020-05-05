@@ -1,3 +1,5 @@
+
+
 /*
 	Student name :
 	Student ID   :
@@ -22,34 +24,32 @@ int count_alive_neighbors(char *b, int x, int y){
 ///int	*i = (b +((10*x) + y));
 
 //count = (b[i-1]) + b[i+1] + b[i-10] + b[i + 10] + b[i - 11] + b[i - 9] + b[i + 11] + b[i + 9];
-if(*(b + (10*y + x - 1)) == '1'){
-	count++;
-}
-if(*(b + (10*y + x + 1)) == '1'){
-	count++;
-}
-if(*(b + (10*y + x - 9)) == '1'){
-	count++;
-}
-if(*(b + (10*y + x + 9)) == '1'){
-	count++;
-}
-if(*(b + (10*y + x - 10)) == '1'){
-	count++;
-}
-if(*(b + (10*y + x + 10)) == '1'){
-	count++;
-}
-if(*(b + (10*y + x - 11)) == '1'){
-	count++;
-}
-if(*(b + (10*y + x + 11)) == '1'){
-	count++;
-}
-
+	if(*(b + (10*x + y - 1)) == '1'){
+		count++;
+	}
+	if(*(b + (10*x + y + 1)) == '1'){
+		count++;
+	}
+	if(*(b + (10*x + y - 9)) == '1'){
+		count++;
+	}
+	if(*(b + (10*x + y + 9)) == '1'){
+		count++;
+	}
+	if(*(b + (10*x + y - 10)) == '1'){
+		count++;
+	}
+	if(*(b + (10*x + y + 10)) == '1'){
+		count++;
+	}
+	if(*(b + (10*x + y - 11)) == '1'){
+		count++;
+	}
+	if(*(b + (10*x + y + 11)) == '1'){
+		count++;
+	}
 	return count;
 }
-
 char* evaluate(char *b)
 {
 	char *n = create_board();
@@ -77,21 +77,21 @@ int main(){
 	b = create_board();
 	read_initial(b);
 
-	printf("Welcome to game of life, please type 'q' to quit\n\n");
 
-	do
-	{
-		printf("Generation %d\n", ++i);
+  int z;
+   z = count_alive_neighbors(b, 0, 4);
+   /*printf("tuy%c\n", *(b));
+   int a;
+   scanf("%d", &a);
+	 if(*(b + 1) == '1'){
+	 	printf("anan");
+	 }
+	 else{
+		 printf("mal");
 
-		print_board(b);
-		next_generation = evaluate(b);
-		destroy_board(b);
-		b = next_generation;
-
-		printf("\n\n");
-
-	}while(getchar() != 'q');
-	destroy_board(b);
-
+	 }*/
+	 int a;
+	 printf("%d", z);
+	 scanf("%d", &a);
 	return EXIT_SUCCESS;
 }
