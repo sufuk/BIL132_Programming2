@@ -6,11 +6,12 @@
 int main(){
 char *b;
 
-checkkersboard(b);
+checkersboard(b);
+readboard(b);
+print_board(b);
 
-
-
-
+int a;
+scanf("%d", &a);
 
 
   return 0;

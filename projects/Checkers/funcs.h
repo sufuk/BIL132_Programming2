@@ -7,7 +7,8 @@
 #define COLUMNS 8
 #define BLACK  'B'
 #define WHITE 'W'
-#define WOOD '_'
+#define WHITEWOOD '_'
+#define DARKWOOD  '@'
 #define INITIAL_FILE	"board.txt"
 
 
@@ -15,7 +16,7 @@
 void checkersboard(char *b){
 
   b = malloc(ROWS * COLUMNS);
-  memset(b, WOOD, ROWS*COLUMNS);
+  memset(b, WHITEWOOD, ROWS*COLUMNS);
 }
 
 void readboard(char *b){
@@ -43,10 +44,13 @@ void print_board(char *b){
 				printf("| B ");
       }
       if(b[index] == WHITE){
-        printf("| W");
+        printf("| W ");
       }
-		  if(b[index] == WOOD){
-        printf("|  ");
+		  if(b[index] == WHITEWOOD){
+        printf("|   ");
+      }
+      if(b[index] == DARKWOOD){
+        printf("| @ ");
       }
     }
 		printf("|\n");
