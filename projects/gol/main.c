@@ -15,7 +15,6 @@ C   N                 new C
 #include <stdio.h>
 #include "gol.h"
 #include "gol.c"
-
 int count_alive_neighbors(char *b, int x, int y)
 {
 	int count = 0;
@@ -34,8 +33,7 @@ char* evaluate(char *b)
 	return n;
 }
 
-int main()
-{
+int main(){
 	int i = 0;
 	char *b = NULL;
 	char *next_generation = NULL;
