@@ -59,11 +59,17 @@ char* evaluate(char *b){
 				if(z == 3){
 					//GIVE BIRTH !!
 					}
+				else{
+					//STILL DEAD
+				}
 			}
 			if(*(b + index) == '1'){
 				z = count_live_neighbors(b, i, j);
 				if((z == 2) || (z == 3)){
 					//LIVES
+				}
+				else{
+					//DIED
 				}
 			}
 				}
