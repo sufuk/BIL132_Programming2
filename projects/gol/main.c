@@ -19,9 +19,6 @@ int count_alive_neighbors(char *b, int x, int y){
 	FILE *f = fopen(INITIAL_FILE, "r");
 	int count = 0;
 /* do stuff with b, x and y */
-///int	*i = (b +((10*x) + y));
-
-//count = (b[i-1]) + b[i+1] + b[i-10] + b[i + 10] + b[i - 11] + b[i - 9] + b[i + 11] + b[i + 9];
 if(*(b + (10*y + x - 1)) == '1'){
 	count++;
 }

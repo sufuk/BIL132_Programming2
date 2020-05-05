@@ -24,30 +24,30 @@ int count_alive_neighbors(char *b, int x, int y){
 ///int	*i = (b +((10*x) + y));
 
 //count = (b[i-1]) + b[i+1] + b[i-10] + b[i + 10] + b[i - 11] + b[i - 9] + b[i + 11] + b[i + 9];
-	if(*(b + (10*x + y - 1)) == '1'){
-		count++;
-	}
-	if(*(b + (10*x + y + 1)) == '1'){
-		count++;
-	}
-	if(*(b + (10*x + y - 9)) == '1'){
-		count++;
-	}
-	if(*(b + (10*x + y + 9)) == '1'){
-		count++;
-	}
-	if(*(b + (10*x + y - 10)) == '1'){
-		count++;
-	}
-	if(*(b + (10*x + y + 10)) == '1'){
-		count++;
-	}
-	if(*(b + (10*x + y - 11)) == '1'){
-		count++;
-	}
-	if(*(b + (10*x + y + 11)) == '1'){
-		count++;
-	}
+if(*(b + (10*y + x - 1)) == '1'){
+	count++;
+}
+if(*(b + (10*y + x + 1)) == '1'){
+	count++;
+}
+if(*(b + (10*y + x - 9)) == '1'){
+	count++;
+}
+if(*(b + (10*y + x + 9)) == '1'){
+	count++;
+}
+if(*(b + (10*y + x - 10)) == '1'){
+	count++;
+}
+if(*(b + (10*y + x + 10)) == '1'){
+	count++;
+}
+if(*(b + (10*y + x - 11)) == '1'){
+	count++;
+}
+if(*(b + (10*y + x + 11)) == '1'){
+	count++;
+}
 	return count;
 }
 char* evaluate(char *b)
@@ -79,7 +79,7 @@ int main(){
 
 
   int z;
-   z = count_alive_neighbors(b, 0, 4);
+   z = count_alive_neighbors(b, 0, 0);
    /*printf("tuy%c\n", *(b));
    int a;
    scanf("%d", &a);
