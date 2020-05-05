@@ -17,6 +17,7 @@ void checkkersboard(char *b){
   b = malloc(ROWS * COLUMNS);
   memset(b, WOOD, ROWS*COLUMNS);
 }
+
 void readboard(char *b){
 
   int i;
@@ -47,9 +48,7 @@ void print_board(char *b){
 		  if(b[index] == WOOD){
         printf("|  ");
       }
-
-
-		}
+    }
 		printf("|\n");
 	}
 }
