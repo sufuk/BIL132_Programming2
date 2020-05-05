@@ -1,10 +1,7 @@
-#BIL132: Programming 2
+BIL132: Programming 2
+---------------------
 
 Project #1: The Game of Life
-
-Due
-
-Monday, May 1st at 11:59pm
 
 ## Overview
 
