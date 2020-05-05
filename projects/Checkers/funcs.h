@@ -12,7 +12,7 @@
 
 
 
-void checkkersboard(char *b){
+void checkersboard(char *b){
 
   b = malloc(ROWS * COLUMNS);
   memset(b, WOOD, ROWS*COLUMNS);

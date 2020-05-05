@@ -4,8 +4,9 @@
 
 
 int main(){
+char *b;
 
-
+checkkersboard(b);
 
 
 
