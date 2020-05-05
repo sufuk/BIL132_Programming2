@@ -63,16 +63,18 @@ char* evaluate(char *b){
 					*(n + index) = '1';
 					}
 				else{
+					//STILL DEAD
 					*(n + index) = '0';
 				}
 				}
-			if(*(b + index) == '1'){
+			else if(*(b + index) == '1'){
 				z = count_alive_neighbors(b, j, i);
 				if((z == 2) || (z == 3)){
 					//LIVES
 						*(n + index) = '1';
 				}
 				else{
+					//DIE
 					*(n + index) = '0';
 				}
 			}
