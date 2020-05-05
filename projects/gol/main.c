@@ -47,18 +47,25 @@ if(*(b + (10*y + x + 11)) == '1'){
 	return count;
 }
 
-char* evaluate(char *b)
-{
+char* evaluate(char *b){
 	char *n = create_board();
 	/* do stuff with b and n */
-
-	int j = 0;
-	for(int i = 0; (i <= 99) && (j <= 99) ; ){
-		if(*(b + i) == '0'){
-			if(count_alive_neighbors(b, i, j))
-		}
-	}
-
+	int z;
+	for(i=0;i<N;i++){
+		for(j=0;j<M;j++){
+			index = i*M + j;
+			if (*(b + index) == '0'){
+				z = count_live_neighbors(b, i, j);
+				if(z == 3){
+					//GIVE BIRTH !!
+					}
+			}
+			if(*(b + index) == '1'){
+				z = count_live_neighbors(b, i, j);
+				if(z == 2)
+			}
+				}
+			}
 	return n;
 }
 
