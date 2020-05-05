@@ -50,18 +50,14 @@ if(*(b + (10*y + x + 11)) == '1'){
 char* evaluate(char *b)
 {
 	char *n = create_board();
-
-
-
-
-
-
-
-
-
-
-
 	/* do stuff with b and n */
+
+	int j = 0;
+	for(int i = 0; (i <= 99) && (j <= 99) ; ){
+		if(*(b + i) == '0'){
+			if(count_alive_neighbors(b, i, j))
+		}
+	}
 
 	return n;
 }
