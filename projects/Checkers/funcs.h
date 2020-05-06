@@ -8,7 +8,7 @@
 #define BLACK  'B'
 #define WHITE 'W'
 #define WHITEWOOD '_'
-#define DARKWOOD  '@'
+//#define DARKWOOD  '#'
 #define INITIAL_FILE	"board.txt"
 
 
@@ -41,17 +41,17 @@ void print_board(char *b){
 			index = i*COLUMNS + j;
 
 			if(b[index] == BLACK){
-				printf("| B ");
+				printf("|_@_");
       }
       if(b[index] == WHITE){
-        printf("| W ");
+        printf("|_O_");
       }
 		  if(b[index] == WHITEWOOD){
-        printf("|   ");
+        printf("|___");
       }
-      if(b[index] == DARKWOOD){
-        printf("| @ ");
-      }
+  /*    if(b[index] == DARKWOOD){
+        printf("|_#__");
+      }*/
     }
 		printf("|\n");
 	}
