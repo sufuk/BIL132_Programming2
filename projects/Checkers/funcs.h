@@ -61,12 +61,7 @@ void print_board(char *b){
 
 int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
   //int x0, y0, x1, y1;
-  if(turn == 0){
-    printf("player 0 please chose your pawn\n");
-    printf("X: ");
-    scanf("%d", &x0);
-    printf("\nY: ");
-    scanf("%d", &y0);
+
     int index0 = y0*8 + x0;
     if(*(b + index0) != 'W'){
       printf("ERROR\n");
@@ -89,8 +84,3 @@ int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
       }
     }
   }
-
-
-
-
-}
