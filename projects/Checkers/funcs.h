@@ -53,6 +53,23 @@ void print_board(char *b){
         printf("|_#__");
       }*/
     }
+
 		printf("|\n");
 	}
+}
+
+
+void move(b){
+  int x, y;
+  if(turn == 0){
+    printf("player 0 please move\n");
+    printf("X: ");
+    scanf("%d", &x);
+    printf("\nY: ");
+    scanf("%d", &y);
+  }
+
+
+
+
 }
