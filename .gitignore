@@ -33,3 +33,4 @@
 *.su
 projects/gol/main
 projects/Checkers/Main.exe.stackdump
+projects/Checkers/boardorder.txt
