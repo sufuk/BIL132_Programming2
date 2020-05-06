@@ -64,23 +64,40 @@ int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
 
     int index0 = y0*8 + x0;
     if(*(b + index0) != 'W'){
-      printf("ERROR\n");
+      return 0;
     }
     if(*(b + index0) == 'W'){
-      printf("Where you want to move? \n");
-      printf("X: ");
-      scanf("%d", &x1);
-      printf("\nY: ");
-      scanf("%d", &y1);
+
       int index1 = y1*8 + x1;
       if(index1 == (index0 + 1)){
         //RIGHT
+        if(*(b + index1) != '_'){
+          return 0;
+        }
+        if(*(b + index1) == '_'){
+          return 1;
+        }
       }
       if(index1 == (index0 - 1)){
         //LEFT
+        if(*(b + index1) != '_'){
+          return 0;
+        }
+        if(*(b + index1) == '_'){
+          return 1;
+        }
       }
       if(index1 == (index0  + 8)){
         //FOWARD
+        if(*(b + index1) != '_'){
+          return 0;
+        }
+        if(*(b + index1) == '_'){
+          return 1;
+        }
+      }
+      else{
+        return 0;
       }
     }
   }
