@@ -13,6 +13,7 @@
 
 
 
+
 void checkersboard(char *b){
 
   b = malloc(ROWS * COLUMNS);
