@@ -59,14 +59,22 @@ void print_board(char *b){
 }
 
 
-void move(b){
-  int x, y;
+void move(char *b, int turn){
+  int x0, y0, x1, y1;
   if(turn == 0){
-    printf("player 0 please move\n");
+    printf("player 0 please chose your pawn\n");
     printf("X: ");
-    scanf("%d", &x);
+    scanf("%d", &x0);
     printf("\nY: ");
-    scanf("%d", &y);
+    scanf("%d", &y0);
+    if(b[(y0*8 + x0)] != 'W'){
+      printf("ERROR\n");
+    }
+    if(b[(y0*8 + x0)] == 'W'){
+      printf("Where you want to move? \n");
+      printf("X: ");
+      scanf("%d", &x1);
+    }
   }
 
 
