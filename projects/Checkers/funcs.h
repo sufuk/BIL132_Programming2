@@ -59,13 +59,10 @@ void print_board(char *b){
 }
 
 
-int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
+int isvalidmove(char *b, int x0, int y0, int x1, int y1){
   //int x0, y0, x1, y1;
 
-    int index0 = y0*8 + x0;
-    if(*(b + index0) != 'W'){
-      return 0;
-    }
+    int index0 = (y0 * 8) + x0;
     if(*(b + index0) == 'W'){
 
       int index1 = y1*8 + x1;
@@ -100,4 +97,41 @@ int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
         return 0;
       }
     }
+    if(*(b + index0) == 'B'){
+
+      int index1 = y1*8 + x1;
+      if(index1 == (index0 + 1)){
+        //RIGHT
+        if(*(b + index1) != '_'){
+          return 0;
+        }
+        if(*(b + index1) == '_'){
+          return 1;
+        }
+      }
+      if(index1 == (index0 - 1)){
+        //LEFT
+        if(*(b + index1) != '_'){
+          return 0;
+        }
+        if(*(b + index1) == '_'){
+          return 1;
+        }
+      }
+      if(index1 == (index0  - 8)){
+        //FOWARD
+        if(*(b + index1) != '_'){
+          return 0;
+        }
+        if(*(b + index1) == '_'){
+          return 1;
+        }
+      }
+      else{
+        return 0;
+      }
+    }
+  else{
+    return 0;
   }
+}
