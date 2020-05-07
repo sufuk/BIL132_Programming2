@@ -17,10 +17,14 @@ int z;
 z = isvalidmove(b, 1, x, y, x1, y1);
 printf("%d\n", z);
 
-move(b, x, y, x1, y1);
+movement(b, x, y, x1, y1);
 //destroy_board(b);
 printf("\n\n");
 print_board(b);
+movement(b, 0, 3, 1, 3);
+printf("\n\n");
+print_board(b);
+
 destroy_board(b);
 
 int a;

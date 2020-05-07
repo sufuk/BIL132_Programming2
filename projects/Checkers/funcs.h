@@ -143,12 +143,12 @@ int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
   }
  return n;
 }
-void move(char *b, int x0, int y0, int x1, int y1){
+void movement(char *b, int x0, int y0, int x1, int y1){
   int index2 = (8*y0) + x0;
   int index3 = (8*y1) + x1;
-  if(*(b+index2) == 'W'){
-    *(b + index3) = 'W';
-    *(b + index2) = '_';
+  if(*(b+index2) == WHITE){
+    *(b + index3) = WHITE;
+    *(b + index2) = WHITEWOOD;
   }
 }
 
