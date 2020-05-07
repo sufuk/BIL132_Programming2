@@ -197,3 +197,15 @@ void eat(char *b, int turn, int x4, int y4, int x5, int y5, int x6, int y6){
     *(b + index6) = BLACK;
   }
 }
+/*
+int turnchecker(char *b, int startturn){
+  int turn = startturn;
+  if(caneat(b, turn) != 0){
+    turn = startturn;
+  }
+  else if() {
+    turn
+  }
+  return turn;
+}
+*/

@@ -5,7 +5,25 @@ int main(){
 char *b = NULL;
 b = checkersboard();
 readboard(b);
-print_board(b);
+
+printf("\n WELCOME TO TURKISH CHECKKERS\n\n\n");
+printf("WHITE --> @\nBLACK --> O\n\n\n");
+//print_board(b);
+
+do{
+  printf("Turn %d\n", ++i);
+
+  print_board(b);
+  
+  printf("\n\n");
+
+}while(getchar() != 'q');
+destroy_board(b);
+
+
+
+/*
+
 int x = 0;
 int y = 2;
 int x1 = 0;
@@ -31,7 +49,7 @@ printf("\n\n");
 eat(b, 2, 0, 3, 1, 3, 2, 3);
 print_board(b);
 printf("\n\n");
-destroy_board(b);
+destroy_board(b);*/
 int a;
 scanf("%d", &a);
   return 0;
