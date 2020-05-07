@@ -180,3 +180,20 @@ int caneat(char *b, int turn){
   }
   return n;
 }
+void eat(char *b, int turn, int x4, int y4, int x5, int y5, int x6, int y6){
+  int index4 = y4*8 + x4;
+  int index5 = y5*8 + x5;
+  int index6 = y6*8 + x6;
+  if(turn == 1){
+    //whıte turn
+    *(b + index4) = WHITEWOOD;
+    *(b + index5) = WHITEWOOD;
+    *(b + index6) = WHITE;
+  }
+  if(turn == 2){
+    //black turn
+    *(b + index4) = WHITEWOOD;
+    *(b + index5) = WHITEWOOD;
+    *(b + index6) = BLACK;
+  }
+}
