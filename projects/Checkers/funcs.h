@@ -14,11 +14,13 @@
 
 
 
-void checkersboard(char *b){
-
-  b = malloc(ROWS * COLUMNS);
-  memset(b, WHITEWOOD, ROWS*COLUMNS);
+char* checkersboard(){
+  char *p;
+  p = malloc(ROWS * COLUMNS);
+  memset(p, WHITEWOOD, ROWS * COLUMNS);
+  return p;
 }
+
 
 void readboard(char *b){
 

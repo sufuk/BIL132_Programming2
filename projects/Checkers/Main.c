@@ -6,7 +6,7 @@
 int main(){
 char *b = NULL;
 
-checkersboard(b);
+b = checkersboard();
 readboard(b);
 print_board(b);
 int x = 0;
