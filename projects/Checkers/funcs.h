@@ -1,8 +1,6 @@
 #include<stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-
 #define ROWS 8
 #define COLUMNS 8
 #define BLACK  'B'
@@ -10,22 +8,14 @@
 #define WHITEWOOD '_'
 //#define DARKWOOD  '#'
 #define INITIAL_FILE	"board.txt"
-
-
-
-
 char* checkersboard(){
   char *p = malloc(ROWS * COLUMNS);
   memset(p, WHITEWOOD, ROWS * COLUMNS);
   return p;
 }
-
-
 void readboard(char *b){
-
   int i;
   FILE *f = fopen(INITIAL_FILE, "r");
-
   if(f == NULL){
     printf("Can not open file %s\n", INITIAL_FILE);
     exit(EXIT_FAILURE);
@@ -41,7 +31,6 @@ void print_board(char *b){
 	for(i=0;i<ROWS;i++){
 		for(j=0;j<COLUMNS;j++){
 			index = i*COLUMNS + j;
-
 			if(b[index] == BLACK){
 				printf("|_@_");
       }
@@ -55,12 +44,9 @@ void print_board(char *b){
         printf("|_#__");
       }*/
     }
-
 		printf("|\n");
 	}
 }
-
-
 int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
   //int x0, y0, x1, y1;
   int index0 = (y0 * 8) + x0;

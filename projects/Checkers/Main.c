@@ -27,11 +27,7 @@ print_board(b);
 int t = caneat(b, 2);
 printf("%d", t);
 destroy_board(b);
-
 int a;
-
 scanf("%d", &a);
-
-
   return 0;
 }
