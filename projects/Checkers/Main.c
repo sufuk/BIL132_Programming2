@@ -17,6 +17,9 @@ printf("\n\n");
 movement(b, 0, 0, 3, 0, 4);
 print_board(b);
 printf("\n\n");
+movement(b, 0, 1, 2, 1, 3);
+print_board(b);
+printf("\n\n");
 game_engine(b, 1);
 /*
 

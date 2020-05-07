@@ -255,12 +255,15 @@ void eat(char *b, int turn){
   eating(b, turn, x0, y0, x1, y1, x2, y2);
 }
 void game_engine(char *b, int turn){
-  while(1){
-    if(caneat(b, turn) != 0){
       while(caneat(b, turn) != 0){
+        if(turn == 0){
+          printf("\nWHITES TURN\n");
+        }
+        if(turn == 1){
+          printf("\nBLACKS TURN\n");
+        }
         printf("You can eat %d way \n", caneat(b, turn));
         eat(b, turn);
-        print_board(b);
         if(caneat(b, turn) == 0){
           if(turn == 0){
             turn = 1;
@@ -269,9 +272,15 @@ void game_engine(char *b, int turn){
             turn = 0;
           }
         }
+        print_board(b);
       }
-    }
-    else if(caneat(b, turn) == 0){
+    if(caneat(b, turn) == 0){
+      if(turn == 0){
+        printf("\nWHITES TURN\n");
+      }
+      if(turn == 1){
+        printf("\nBLACKS TURN\n");
+      }
       move(b, turn);
       if(turn == 0){
         turn = 1;
@@ -281,4 +290,3 @@ void game_engine(char *b, int turn){
       }
     }
   }
-}
