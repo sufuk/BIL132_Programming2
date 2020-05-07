@@ -4,7 +4,7 @@
 
 
 int main(){
-char *b;
+char *b = NULL;
 
 checkersboard(b);
 readboard(b);
