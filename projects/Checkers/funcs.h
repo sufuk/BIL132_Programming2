@@ -47,6 +47,9 @@ void print_board(char *b){
 		printf("|\n");
 	}
 }
+void destroy_board(char *b){
+	free(b);
+}
 int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
   //int x0, y0, x1, y1;
   int index0 = (y0 * 8) + x0;
@@ -140,9 +143,6 @@ void movement(char *b, int turn, int x0, int y0, int x1, int y1){
     *(b + index3) = BLACK;
     *(b + index2) = WHITEWOOD;
   }
-}
-void destroy_board(char *b){
-	free(b);
 }
 int caneat(char *b, int turn){
   int n = 0;
