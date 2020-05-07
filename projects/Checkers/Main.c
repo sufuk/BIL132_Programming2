@@ -17,14 +17,15 @@ int z;
 z = isvalidmove(b, 1, x, y, x1, y1);
 printf("%d\n", z);
 
-movement(b, x, y, x1, y1);
+movement(b, 1, x, y, x1, y1);
 //destroy_board(b);
 printf("\n\n");
 print_board(b);
-movement(b, 0, 3, 1, 3);
+movement(b, 1, 0, 3, 0, 4);
 printf("\n\n");
 print_board(b);
-
+int t = caneat(b, 2);
+printf("%d", t);
 destroy_board(b);
 
 int a;

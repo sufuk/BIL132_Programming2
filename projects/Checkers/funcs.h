@@ -143,16 +143,54 @@ int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
   }
  return n;
 }
-void movement(char *b, int x0, int y0, int x1, int y1){
+void movement(char *b, int turn, int x0, int y0, int x1, int y1){
   int index2 = (8*y0) + x0;
   int index3 = (8*y1) + x1;
-  if(*(b+index2) == WHITE){
+  if(turn == 1){
     *(b + index3) = WHITE;
     *(b + index2) = WHITEWOOD;
   }
+  if(turn == 2){
+    *(b + index3) = BLACK;
+    *(b + index2) = WHITEWOOD;
+  }
 }
-
-void destroy_board(char *b)
-{
+void destroy_board(char *b){
 	free(b);
+}
+int caneat(char *b, int turn){
+  int n = 0;
+  if(turn == 1){
+    //white
+    for(int i = 0; i < COLUMNS*ROWS ; i++){
+      if(*(b + i) == WHITE){
+        if((*(b + i - 1) == BLACK) && (*(b + i - 2) == WHITEWOOD)){
+          n++;
+        }
+        if((*(b + i + 1) == BLACK) && (*(b + i + 2) == WHITEWOOD)){
+          n++;
+        }
+        if((*(b + i + 8) == BLACK) && (*(b + i + 16) == WHITEWOOD)){
+          n++;
+        }
+      }
+    }
+  }
+  if(turn == 2){
+    //black
+    for(int i = 0; i < COLUMNS*ROWS ; i++){
+      if(*(b + i) == BLACK){
+        if((*(b + i - 1) == WHITE) && (*(b + i - 2) == WHITEWOOD)){
+          n++;
+        }
+        if((*(b + i + 1) == WHITE) && (*(b + i + 2) == WHITEWOOD)){
+          n++;
+        }
+        if((*(b + i - 8) == WHITE) && (*(b + i - 16) == WHITEWOOD)){
+          n++;
+        }
+      }
+    }
+  }
+  return n;
 }
