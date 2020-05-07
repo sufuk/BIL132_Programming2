@@ -5,23 +5,19 @@ int main(){
 char *b = NULL;
 b = checkersboard();
 readboard(b);
-
 printf("\n WELCOME TO TURKISH CHECKKERS\n\n\n");
 printf("WHITE --> @\nBLACK --> O\n\n\n");
-//print_board(b);
+print_board(b);
+printf("\n\n");
 
-do{
-  printf("Turn %d\n", ++i);
+movement(b, 0, 0, 2, 0, 3);
+print_board(b);
+printf("\n\n");
 
-  print_board(b);
-  
-  printf("\n\n");
-
-}while(getchar() != 'q');
-destroy_board(b);
-
-
-
+movement(b, 0, 0, 3, 0, 4);
+print_board(b);
+printf("\n\n");
+game_engine(b, 1);
 /*
 
 int x = 0;
