@@ -15,8 +15,7 @@
 
 
 char* checkersboard(){
-  char *p;
-  p = malloc(ROWS * COLUMNS);
+  char *p = malloc(ROWS * COLUMNS);
   memset(p, WHITEWOOD, ROWS * COLUMNS);
   return p;
 }
@@ -31,8 +30,8 @@ void readboard(char *b){
     printf("Can not open file %s\n", INITIAL_FILE);
     exit(EXIT_FAILURE);
   }
-  for(i=0 ; i<ROWS * COLUMNS ; i++){
-    b[i] = fgetc(f);
+  for(i=0 ; i < ROWS * COLUMNS ; i++){
+    *(b + i) = fgetc(f);
   }
 fclose(f);
 }
@@ -142,8 +141,18 @@ int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
       n = 0;
     }
   }
-  else{
-    n = 0;
-  }
  return n;
+}
+void move(char *b, int x0, int y0, int x1, int y1){
+  int index2 = (8*y0) + x0;
+  int index3 = (8*y1) + x1;
+  if(*(b+index2) == 'W'){
+    *(b + index3) = 'W';
+    *(b + index2) = '_';
+  }
+}
+
+void destroy_board(char *b)
+{
+	free(b);
 }
