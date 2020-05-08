@@ -40,9 +40,6 @@ void print_board(char *b){
 		  if(b[index] == WHITEWOOD){
         printf("|___");
       }
-  /*    if(b[index] == DARKWOOD){
-        printf("|_#__");
-      }*/
     }
 		printf("|\n");
 	}
@@ -51,7 +48,6 @@ void destroy_board(char *b){
 	free(b);
 }
 int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
-  //int x0, y0, x1, y1;
   int index0 = (y0 * 8) + x0;
   int n;
   if(turn == 0){
@@ -197,18 +193,6 @@ void eating(char *b, int turn, int x4, int y4, int x5, int y5, int x6, int y6){
     *(b + index6) = BLACK;
   }
 }
-/*
-int turnchecker(char *b, int startturn){
-  int turn = startturn;
-  if(caneat(b, turn) != 0){
-    turn = startturn;
-  }
-  else if() {
-    turn
-  }
-  return turn;
-}
-*/
 void move(char *b, int turn){
   printf("\n Please enter which piece you wanna move\n");
   int x0;
@@ -253,8 +237,38 @@ void eat(char *b, int turn){
   scanf("%d", &y2);
   eating(b, turn, x0, y0, x1, y1, x2, y2);
 }
+int checkmatchstatus(char *b){
+  int i,j;
+  int index = 0;
+  int blackpieces = 0;
+  int whitepieces = 0;
+  int n;
+  for(i=0;i<ROWS;i++){
+    for(j=0;j<COLUMNS;j++){
+      index = i*COLUMNS + j;
+      if(b[index] == BLACK){
+        blackpieces++;
+      }
+      if(b[index] == WHITE){
+        whitepieces++;
+      }
+    }
+  }
+  if(blackpieces == 0){
+    n = 0;
+  }
+  else if(whitepieces == 0){
+    n = 1;
+  }
+  else{
+    n = 2;
+  }
+return n;
+}
 void game_engine(char *b, int turn){
-  while(1){
+  int lap = 1;
+  while(checkmatchstatus(b) == 2){
+    printf("\nLap: %d\n", lap);
     if(caneat(b, turn) != 0){
       while(caneat(b, turn) != 0){
         if(turn == 0){
@@ -292,33 +306,16 @@ void game_engine(char *b, int turn){
         turn = 0;
       }
     }
-  }
-}
-int checkmatchstatus(char *b){
-  int i,j;
-  int index = 0;
-  int blackpieces = 0;
-  int whitepieces = 0;
-  int n;
-  for(i=0;i<ROWS;i++){
-    for(j=0;j<COLUMNS;j++){
-      index = i*COLUMNS + j;
-      if(b[index] == BLACK){
-        blackpieces++;
-      }
-      if(b[index] == WHITE){
-        whitepieces++;
-      }
+    if(checkmatchstatus(b) == 0){
+      printf("\nWHITE WON\n");
+      break;
+    }
+    else if(checkmatchstatus(b) == 1){
+      printf("\nBLACK WON\n");
+      break;
+    }
+    else if(checkmatchstatus(b) == 2){
+      lap++;
     }
   }
-  if(blackpieces == 0){
-    n = 0;
-  }
-  else if(whitepieces == 0){
-    n = 1;
-  }
-  else{
-    n = 2;
-  }
-return n;
 }
