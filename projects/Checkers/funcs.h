@@ -294,3 +294,31 @@ void game_engine(char *b, int turn){
     }
   }
 }
+int checkmatchstatus(char *b){
+  int i,j;
+  int index = 0;
+  int blackpieces = 0;
+  int whitepieces = 0;
+  int n;
+  for(i=0;i<ROWS;i++){
+    for(j=0;j<COLUMNS;j++){
+      index = i*COLUMNS + j;
+      if(b[index] == BLACK){
+        blackpieces++;
+      }
+      if(b[index] == WHITE){
+        whitepieces++;
+      }
+    }
+  }
+  if(blackpieces == 0){
+    n = 0;
+  }
+  else if(whitepieces == 0){
+    n = 1;
+  }
+  else{
+    n = 2;
+  }
+return n;
+}
