@@ -300,8 +300,6 @@ void game_engine(char *b, int turn){
         printf("\nBLACKS TURN\n");
       }
       move(b, turn);
-      printf("\n\n");
-      print_board(b);
       if(turn == 0){
         turn = 1;
       }
