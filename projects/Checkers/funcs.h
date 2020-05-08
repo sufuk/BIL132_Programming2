@@ -268,6 +268,9 @@ return n;
 void game_engine(char *b, int turn){
   int lap = 1;
   while(checkmatchstatus(b) == 2){
+    printf("\n\n");
+    print_board(b);
+    printf("\n\n");
     printf("\nLap: %d\n", lap);
     if(caneat(b, turn) != 0){
       while(caneat(b, turn) != 0){
@@ -287,7 +290,9 @@ void game_engine(char *b, int turn){
             turn = 0;
           }
         }
+        printf("\n\n");
         print_board(b);
+        printf("\n\n");
       }
     }
     else if(caneat(b, turn) == 0){
@@ -298,6 +303,7 @@ void game_engine(char *b, int turn){
         printf("\nBLACKS TURN\n");
       }
       move(b, turn);
+      printf("\n\n");
       print_board(b);
       if(turn == 0){
         turn = 1;
