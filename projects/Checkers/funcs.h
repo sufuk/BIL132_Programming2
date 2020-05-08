@@ -47,12 +47,12 @@ void print_board(char *b){
 void destroy_board(char *b){
 	free(b);
 }
-int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
+int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){ ////BUG!!
   int index0 = (y0 * 8) + x0;
   int n;
+  int index1 = (y1 * 8) + x1;
   if(turn == 0){
     if(*(b + index0) == 'W'){
-      int index1 = y1*8 + x1;
       if(index1 == (index0 + 1)){
       //RIGHT
         if(*(b + index1) != '_'){
@@ -90,7 +90,6 @@ int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
   }
   if(turn == 1){
     if(*(b + index0) == 'B'){
-      int index1 = y1*8 + x1;
       if(index1 == (index0 + 1)){
         //RIGHT
         if(*(b + index1) != '_'){
@@ -193,7 +192,7 @@ void eating(char *b, int turn, int x4, int y4, int x5, int y5, int x6, int y6){
     *(b + index6) = BLACK;
   }
 }
-void move(char *b, int turn){
+void move(char *b, int turn){ /////BUG !!!!!!!!!!
   printf("\n Please enter which piece you wanna move\n");
   int x0;
   int y0;
