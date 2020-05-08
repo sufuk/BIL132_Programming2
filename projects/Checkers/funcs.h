@@ -229,7 +229,6 @@ void move(char *b, int turn){
     movement(b, turn, x0, y0, x1, y1);
   }
 }
-
 void eat(char *b, int turn){
   printf("\n Please enter which piece you want to use\n");
   int x0;
@@ -255,11 +254,13 @@ void eat(char *b, int turn){
   eating(b, turn, x0, y0, x1, y1, x2, y2);
 }
 void game_engine(char *b, int turn){
+  while(1){
+    if(caneat(b, turn) != 0){
       while(caneat(b, turn) != 0){
         if(turn == 0){
           printf("\nWHITES TURN\n");
         }
-        if(turn == 1){
+        else if(turn == 1){
           printf("\nBLACKS TURN\n");
         }
         printf("You can eat %d way \n", caneat(b, turn));
@@ -268,13 +269,14 @@ void game_engine(char *b, int turn){
           if(turn == 0){
             turn = 1;
           }
-          if(turn == 1){
+          else if(turn == 1){
             turn = 0;
           }
         }
         print_board(b);
       }
-    if(caneat(b, turn) == 0){
+    }
+    else if(caneat(b, turn) == 0){
       if(turn == 0){
         printf("\nWHITES TURN\n");
       }
@@ -282,11 +284,13 @@ void game_engine(char *b, int turn){
         printf("\nBLACKS TURN\n");
       }
       move(b, turn);
+      print_board(b);
       if(turn == 0){
         turn = 1;
       }
-      if(turn == 1){
+      else if(turn == 1){
         turn = 0;
       }
     }
   }
+}

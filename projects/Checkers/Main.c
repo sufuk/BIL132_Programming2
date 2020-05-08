@@ -13,7 +13,6 @@ printf("\n\n");
 movement(b, 0, 0, 2, 0, 3);
 print_board(b);
 printf("\n\n");
-
 movement(b, 0, 0, 3, 0, 4);
 print_board(b);
 printf("\n\n");
