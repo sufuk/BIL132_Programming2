@@ -148,7 +148,9 @@ int caneat(char *b, int turn){
           n++;
         }
         if((*(b + i + 1) == BLACK) && (*(b + i + 2) == WHITEWOOD)){
-          n++;
+          if(((i + 1) % 8) != 0){
+            n++;
+          }
         }
         if((*(b + i + 8) == BLACK) && (*(b + i + 16) == WHITEWOOD)){
           n++;
