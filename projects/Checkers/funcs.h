@@ -139,9 +139,10 @@ void movement(char *b, int turn, int x0, int y0, int x1, int y1){
 }
 int caneat(char *b, int turn){
   int n = 0;
+  int i;
   if(turn == 0){
     //white
-    for(int i = 0; i < COLUMNS*ROWS ; i++){
+    for(i = 0; i < COLUMNS*ROWS ; i++){
       if(*(b + i) == WHITE){
         if((*(b + i - 1) == BLACK) && (*(b + i - 2) == WHITEWOOD)){
           n++;
@@ -155,12 +156,14 @@ int caneat(char *b, int turn){
       }
     }
   }
-  if(turn == 1){
+  else if(turn == 1){
     //black
-    for(int i = 0; i < COLUMNS*ROWS ; i++){
+    for(i = 0; i < COLUMNS*ROWS ; i++){
       if(*(b + i) == BLACK){
         if((*(b + i - 1) == WHITE) && (*(b + i - 2) == WHITEWOOD)){
-          n++;
+          if((i % 8) != 0){
+            n++;
+          }
         }
         if((*(b + i + 1) == WHITE) && (*(b + i + 2) == WHITEWOOD)){
           n++;
