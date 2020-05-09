@@ -222,6 +222,7 @@ void move(char *b, int turn){
   if(z0 == 1){
     movement(b, turn, x0, y0, x1, y1);
   }
+}
   void moveui(char *b, int turn){
 
     int x0;
@@ -307,7 +308,7 @@ void move(char *b, int turn){
 
 
   }
-}
+
 void eat(char *b, int turn){
   printf("\n Please enter which piece you want to use\n");
   int x0;
@@ -412,7 +413,7 @@ void game_engine(char *b, int turn){
       if(turn == 1){
         printf("\nBLACKS TURN\n");
       }
-      move(b, turn);
+      moveui(b, turn);
       if(turn == 0){
         turn = 1;
       }
