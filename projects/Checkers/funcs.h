@@ -229,7 +229,7 @@ void move(char *b, int turn){
     int y0;
     int z0;
     int breaker = 0;
-    while(breaker != 1)
+    while(breaker != 1){
     printf("\n Please enter which piece you wanna move\n");
     printf("X: ");
     scanf("%d", &x0);
@@ -305,9 +305,8 @@ void move(char *b, int turn){
         }
       }
     }
-
-
   }
+}
 
 void eat(char *b, int turn){
   printf("\n Please enter which piece you want to use\n");
