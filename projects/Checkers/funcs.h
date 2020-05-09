@@ -223,7 +223,88 @@ void move(char *b, int turn){
     movement(b, turn, x0, y0, x1, y1);
   }
   void moveui(char *b, int turn){
+
+    int x0;
+    int y0;
+    int z0;
+    int breaker = 0;
+    while(breaker != 1)
     printf("\n Please enter which piece you wanna move\n");
+    printf("X: ");
+    scanf("%d", &x0);
+    printf("\nY: ");
+    scanf("%d", &y0);
+    printf("\nPlease enter where you wanna move\n");
+    printf("\n[1] FOWARD\n");
+    printf("\n[2] LEFT\n");
+    printf("\n[3] RIGHT\n");
+    int a0;
+    scanf("%d", &a0);
+    if(turn == 0){
+      if(a0 == 1){
+        z0 = isvalidmove(b, turn, x0, y0, x0, y0+8);
+        if(z0 == 1){
+          movement(b, turn, x0, y0, x0, y0+8);
+          breaker = 1;
+        }
+        else if(z0 == 0){
+          printf("\nincorrect input try again\n");
+        }
+      }
+      else if(a0 == 2){
+        z0 = isvalidmove(b, turn, x0, y0, x0-1, y0);
+        if(z0 == 1){
+          movement(b, turn, x0, y0, x0-1, y0);
+          breaker = 1;
+        }
+        else if(z0 == 0){
+          printf("\nincorrect input try again\n");
+        }
+      }
+      else if(a0 == 3){
+        z0 = isvalidmove(b, turn, x0, y0, x0+1, y0);
+        if(z0 == 1){
+          movement(b, turn, x0, y0, x0+1, y0);
+          breaker = 1;
+        }
+        else if(z0 == 0){
+          printf("\nincorrect input try again\n");
+        }
+      }
+    }
+    else if(turn == 1){
+      if(a0 == 1){
+        z0 = isvalidmove(b, turn, x0, y0, x0, y0-8);
+        if(z0 == 1){
+          movement(b, turn, x0, y0, x0, y0-8);
+          breaker = 1;
+        }
+        else if(z0 == 0){
+          printf("\nincorrect input try again\n");
+        }
+      }
+      else if(a0 == 2){
+        z0 = isvalidmove(b, turn, x0, y0, x0-1, y0);
+        if(z0 == 1){
+          movement(b, turn, x0, y0, x0-1, y0);
+          breaker = 1;
+        }
+        else if(z0 == 0){
+          printf("\nincorrect input try again\n");
+        }
+      }
+      else if(a0 == 3){
+        z0 = isvalidmove(b, turn, x0, y0, x0+1, y0);
+        if(z0 == 1){
+          movement(b, turn, x0, y0, x0+1, y0);
+          breaker = 1;
+        }
+        else if(z0 == 0){
+          printf("\nincorrect input try again\n");
+        }
+      }
+    }
+
 
   }
 }
