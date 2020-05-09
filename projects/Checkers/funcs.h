@@ -5,6 +5,8 @@
 #define COLUMNS 8
 #define BLACK  'B'
 #define WHITE 'W'
+#define WHITEDAMA '#'
+#define BLACKDAMA '$'
 #define WHITEWOOD '_'
 //#define DARKWOOD  '#'
 #define INITIAL_FILE	"board.txt"
@@ -324,4 +326,8 @@ void game_engine(char *b, int turn){
       lap++;
     }
   }
+}
+
+int checkdama(char *b, int turn){
+
 }
