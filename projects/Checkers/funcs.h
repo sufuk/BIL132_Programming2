@@ -328,6 +328,17 @@ void game_engine(char *b, int turn){
   }
 }
 
-int checkdama(char *b, int turn){
-
+void make_dama(char *b, int turn){
+  int i;
+  int j;
+  for(i = 0 ; i < 8 ; i++){
+    if(*(b + i) == BLACK){
+      *(b + i) = BLACKDAMA;
+    }
+  }
+  for(j = 56; j < 64 ; j++){
+    if(*(b + j) == WHITE){
+      *(b + j) = WHITEDAMA;
+    }
+  }
 }
