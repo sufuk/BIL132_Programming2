@@ -223,7 +223,7 @@ void move(char *b, int turn){
     movement(b, turn, x0, y0, x1, y1);
   }
 }
-  void moveui(char *b, int turn){
+  void moveui(char *b, int turn){//BUG
 
     int x0;
     int y0;
