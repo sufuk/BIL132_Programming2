@@ -269,6 +269,24 @@ int checkmatchstatus(char *b){
   }
 return n;
 }
+
+void make_dama(char *b){
+  int i;
+  int j;
+  for(i = 0 ; i < 8 ; i++){
+    if(*(b + i) == BLACK){
+      *(b + i) = BLACKDAMA;
+    else{
+      printf("error");
+    }
+    }
+  }
+  for(j = 56; j < 64 ; j++){
+    if(*(b + j) == WHITE){
+      *(b + j) = WHITEDAMA;
+    }
+  }
+}
 void game_engine(char *b, int turn){
   int lap = 1;
   while(checkmatchstatus(b) == 2){
@@ -314,6 +332,7 @@ void game_engine(char *b, int turn){
         turn = 0;
       }
     }
+    make_dama(b);
     if(checkmatchstatus(b) == 0){
       printf("\nWHITE WON\n");
       break;
@@ -324,21 +343,6 @@ void game_engine(char *b, int turn){
     }
     else if(checkmatchstatus(b) == 2){
       lap++;
-    }
-  }
-}
-
-void make_dama(char *b, int turn){
-  int i;
-  int j;
-  for(i = 0 ; i < 8 ; i++){
-    if(*(b + i) == BLACK){
-      *(b + i) = BLACKDAMA;
-    }
-  }
-  for(j = 56; j < 64 ; j++){
-    if(*(b + j) == WHITE){
-      *(b + j) = WHITEDAMA;
     }
   }
 }
