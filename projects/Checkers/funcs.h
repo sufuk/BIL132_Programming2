@@ -243,9 +243,9 @@ void move(char *b, int turn){
     scanf("%d", &a0);
     if(turn == 0){
       if(a0 == 1){
-        z0 = isvalidmove(b, turn, x0, y0, x0, y0+8);
+        z0 = isvalidmove(b, turn, x0, y0, x0, y0+1);
         if(z0 == 1){
-          movement(b, turn, x0, y0, x0, y0+8);
+          movement(b, turn, x0, y0, x0, y0+1);
           breaker = 1;
         }
         else if(z0 == 0){
@@ -275,9 +275,9 @@ void move(char *b, int turn){
     }
     else if(turn == 1){
       if(a0 == 1){
-        z0 = isvalidmove(b, turn, x0, y0, x0, y0-8);
+        z0 = isvalidmove(b, turn, x0, y0, x0, y0-1);
         if(z0 == 1){
-          movement(b, turn, x0, y0, x0, y0-8);
+          movement(b, turn, x0, y0, x0, y0-1);
           breaker = 1;
         }
         else if(z0 == 0){
