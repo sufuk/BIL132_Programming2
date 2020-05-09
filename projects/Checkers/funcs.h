@@ -67,7 +67,9 @@ int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
           n = 0;
         }
         else if(*(b + index1) == '_'){
+          if(index1 % 8 != 0){
           n = 1;
+        }
         }
       }
       else if(index1 == (index0 - 1)){
@@ -76,7 +78,9 @@ int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
           n = 0;
         }
         else if(*(b + index1) == '_'){
-          n = 1;
+          if(index0 % 8 != 0){
+            n = 1;
+          }
         }
       }
       else if(index1 == (index0  + 8)){
@@ -92,7 +96,6 @@ int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
         n = 0;
       }
     }
-
   }
   if(turn == 1){
     if(*(b + index0) == 'B'){
@@ -104,6 +107,9 @@ int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
         else if(*(b + index1) == '_'){
           if(index1 % 8 != 0){
             n = 1;
+          }
+          else{
+            n = 0;
           }
         }
       }
