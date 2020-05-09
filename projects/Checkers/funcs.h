@@ -42,6 +42,12 @@ void print_board(char *b){
 		  if(b[index] == WHITEWOOD){
         printf("|___");
       }
+      if(b[index] == WHITEDAMA){
+        printf("|_#_");
+      }
+      if(b[index] == BLACKDAMA){
+        printf("|_$_");
+      }
     }
 		printf("|\n");
 	}
@@ -276,9 +282,6 @@ void make_dama(char *b){
   for(i = 0 ; i < 8 ; i++){
     if(*(b + i) == BLACK){
       *(b + i) = BLACKDAMA;
-    else{
-      printf("error");
-    }
     }
   }
   for(j = 56; j < 64 ; j++){
