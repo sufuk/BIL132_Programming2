@@ -342,6 +342,18 @@ void eat(char *b, int turn){
   scanf("%d", &y2);
   eating(b, turn, x0, y0, x1, y1, x2, y2);
 }
+
+int caneat_1(char *b, int turn){
+
+  
+}
+
+void eatui(char *b, int turn){
+  printf("\n Please enter which piece you want to use\n");
+
+}
+
+
 int checkmatchstatus(char *b){
   int i,j;
   int index = 0;
