@@ -343,13 +343,52 @@ void eat(char *b, int turn){
   eating(b, turn, x0, y0, x1, y1, x2, y2);
 }
 
-int caneat_1(char *b, int turn){
+int caneat_1(char *b, int turn, int x, int y){
 
-  
+  index0 = 10*y + x;
+  if(turn == 0){
+    if(*(b + index0) == WHITE){
+      if(*(b + index + 8) == BLACK && *(b + index + 16) == WHITEWOOD)
+    }
+  }
+
+
+
+
+return n;
 }
-
 void eatui(char *b, int turn){
-  printf("\n Please enter which piece you want to use\n");
+  int x0;
+  int y0;
+  int x1;
+  int y1;
+  int x2;
+  int y2;
+  int breaker = 0;
+  int index0;
+  int a;
+  while(breaker != 1){
+    printf("\n Please enter which piece you want to use\n");
+    printf("X: ");
+    scanf("%d", &x0);
+    printf("\nY: ");
+    scanf("%d", &y0);
+    printf("\nPlease enter which direction you eat\n");
+    printf("[1]FOWARD\n[2]LEFT\n[3]RIGHT\n");
+    scanf("%d", &a);
+
+  }
+
+
+
+
+
+
+
+
+
+
+  eating(b, turn, x0, y0, x1, y1, x2, y2);
 
 }
 
@@ -412,7 +451,7 @@ void game_engine(char *b, int turn){
         else if(turn == 1){
           printf("\nBLACKS TURN\n");
         }
-        printf("You can eat %d way \n", caneat(b, turn));
+        printf("You can eat \n");
         eat(b, turn);
         if(caneat(b, turn) == 0){
           if(turn == 0){
