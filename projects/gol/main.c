@@ -9,20 +9,28 @@
 #include "gol.h"
 #include "gol.c"
 int count_alive_neighbors(char *b, int x, int y){
-	FILE *f = fopen(INITIAL_FILE, "r");
+//	FILE *f = fopen(INITIAL_FILE, "r");
 	int count = 0;
 /* do stuff with b, x and y */
 if(*(b + (10*y + x - 1)) == '1'){
-	count++;
+	if((10*y + x) % 10 != 0){
+		count++;
+}
 }
 if(*(b + (10*y + x + 1)) == '1'){
-	count++;
+	if((10*y + x + 1) % 10 != 0){
+		count++;
+}
 }
 if(*(b + (10*y + x - 9)) == '1'){
-	count++;
+	if((10*y + x -9) % 10 != 0){
+		count++;
+}
 }
 if(*(b + (10*y + x + 9)) == '1'){
-	count++;
+	if((10*y + x) % 10 != 0){
+		count++;
+}
 }
 if(*(b + (10*y + x - 10)) == '1'){
 	count++;
@@ -31,10 +39,14 @@ if(*(b + (10*y + x + 10)) == '1'){
 	count++;
 }
 if(*(b + (10*y + x - 11)) == '1'){
-	count++;
+	if((10*y + x) % 10 != 0){
+		count++;
+}
 }
 if(*(b + (10*y + x + 11)) == '1'){
-	count++;
+	if((10*y + x + 11) % 10 != 0){
+		count++;
+}
 }
 
 	return count;
