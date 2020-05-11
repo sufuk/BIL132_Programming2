@@ -344,11 +344,13 @@ void eat(char *b, int turn){
 }
 
 int caneat_1(char *b, int turn, int x, int y){
-
-  index0 = 10*y + x;
+ int n;
+  int index0 = 10*y + x;
   if(turn == 0){
     if(*(b + index0) == WHITE){
-      if(*(b + index + 8) == BLACK && *(b + index + 16) == WHITEWOOD)
+      if(*(b + index0 + 8) == BLACK && *(b + index0 + 16) == WHITEWOOD){
+        
+      }
     }
   }
 
