@@ -2,7 +2,8 @@
 	Student name : Semih Ufuk Güler
 	Student ID   : 200011674
 */
-
+//youcan check writing procces from here
+//https://github.com/sufuk/BIL132_Programming2/commits/master/projects
 
 #include <stdlib.h>
 #include <stdio.h>
