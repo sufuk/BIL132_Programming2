@@ -386,8 +386,8 @@ void eatui(char *b, int turn){
   int x2;
   int y2;
   int breaker = 0;
-  int index0;
   int a;
+  int z;
   while(breaker != 1){
     printf("\n Please enter which piece you want to use\n");
     printf("X: ");
@@ -397,14 +397,25 @@ void eatui(char *b, int turn){
     printf("\nPlease enter which direction you eat\n");
     printf("[1]FOWARD\n[2]LEFT\n[3]RIGHT\n");
     scanf("%d", &a);
-    if(a == 1){
-      //Foward
+    z = isvalid_eat(b, turn, x0, y0, a);
+    if((z == 1){
+      if(a == 1){
+        //foward
+      }
+      else if(a == 2){
+        //left
+      }
+      else if(a == 3){
+        //right
+      }
     }
+    else if(z == 0){
+
+    }
+
   }
   eating(b, turn, x0, y0, x1, y1, x2, y2);
 }
-
-
 int checkmatchstatus(char *b){
   int i,j;
   int index = 0;
