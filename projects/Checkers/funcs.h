@@ -97,7 +97,7 @@ int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
       }
     }
   }
-  if(turn == 1){
+else if(turn == 1){
     if(*(b + index0) == 'B'){
       if(index1 == (index0 + 1)){
         //RIGHT
@@ -234,7 +234,6 @@ void move(char *b, int turn){
   }
 }
   void moveui(char *b, int turn){//BUG
-
     int x0;
     int y0;
     int z0;
@@ -342,21 +341,41 @@ void eat(char *b, int turn){
   scanf("%d", &y2);
   eating(b, turn, x0, y0, x1, y1, x2, y2);
 }
-
-int caneat_1(char *b, int turn, int x, int y){
+int isvalid_eat(char *b, int turn, int x, int y, int direction){
  int n;
-  int index0 = 10*y + x;
-  if(turn == 0){
-    if(*(b + index0) == WHITE){
-      if(*(b + index0 + 8) == BLACK && *(b + index0 + 16) == WHITEWOOD){
-        
-      }
-    }
-  }
-
-
-
-
+ int index0 = 8*y + x;
+ if(turn == 0){
+   if(*(b + index0) == WHITE){
+     if(((direction == 1) && (*(b + index0 + 8) == BLACK)) && (*(b + index0 + 16) == WHITEWOOD)){
+       n = 1;
+     }
+     else if(((direction == 2) && (*(b + index0 - 1) == BLACK)) && (*(b + index0 - 2) == WHITEWOOD)){
+       n = 1;
+     }
+     else if(((direction == 3) && (*(b + index0 + 1) == BLACK)) && (*(b + index0 + 2) == WHITEWOOD)){
+       n = 1;
+     }
+   }
+   else{
+     n = 0;
+   }
+ }
+ else if(turn == 1){
+   if(*(b + index0) == BLACK){
+     if(((direction == 1) && (*(b + index0 - 8) == WHITE)) && (*(b + index0 - 16) == WHITEWOOD)){
+       n = 1;
+     }
+     else if(((direction == 2) && (*(b + index0 - 1) == WHITE)) && (*(b + index0 - 2) == WHITEWOOD)){
+       n = 1;
+     }
+     else if(((direction == 3) && (*(b + index0 + 1) == WHITE)) && (*(b + index0 + 2) == WHITEWOOD)){
+       n = 1;
+     }
+   }
+   else{
+     n = 0;
+   }
+ }
 return n;
 }
 void eatui(char *b, int turn){
@@ -378,20 +397,11 @@ void eatui(char *b, int turn){
     printf("\nPlease enter which direction you eat\n");
     printf("[1]FOWARD\n[2]LEFT\n[3]RIGHT\n");
     scanf("%d", &a);
-
+    if(a == 1){
+      //Foward
+    }
   }
-
-
-
-
-
-
-
-
-
-
   eating(b, turn, x0, y0, x1, y1, x2, y2);
-
 }
 
 
