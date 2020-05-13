@@ -162,7 +162,7 @@ int caneat(char *b, int turn){
     //white
     for(i = 0; i < COLUMNS*ROWS ; i++){
       if(*(b + i) == WHITE){
-        if((*(b + i - 1) == BLACK) && (*(b + i - 2) == WHITEWOOD)){
+        if(((*(b + i - 1) == BLACK) && (*(b + i - 2) == WHITEWOOD))&&((i-1) % 8 != 0)){
           n++;
         }
         if((*(b + i + 1) == BLACK) && (*(b + i + 2) == WHITEWOOD)){
@@ -381,10 +381,6 @@ return n;
 void eatui(char *b, int turn){
   int x0;
   int y0;
-  int x1;
-  int y1;
-  int x2;
-  int y2;
   int breaker = 0;
   int a;
   int z;
@@ -398,23 +394,33 @@ void eatui(char *b, int turn){
     printf("[1]FOWARD\n[2]LEFT\n[3]RIGHT\n");
     scanf("%d", &a);
     z = isvalid_eat(b, turn, x0, y0, a);
-    if((z == 1){
+    if(z == 1){
       if(a == 1){
         //foward
+        if(turn == 0){
+          eating(b, turn, x0, y0, x0, y0+1, x0, y0+2);
+          breaker = 1;
+        }
+        else if(turn == 1){
+          eating(b, turn, x0, y0, x0, y0-1, x0, y0-2);
+          breaker = 1;
+        }
       }
       else if(a == 2){
         //left
+        eating(b, turn, x0, y0, x0-1, y0, x0-2, y0);
+        breaker = 1;
       }
       else if(a == 3){
         //right
+        eating(b, turn, x0, y0, x0+1, y0, x0+2, y0);
+        breaker = 1;
       }
     }
     else if(z == 0){
-
+      printf("\nYou cant eat like that\n");
     }
-
   }
-  eating(b, turn, x0, y0, x1, y1, x2, y2);
 }
 int checkmatchstatus(char *b){
   int i,j;
@@ -475,7 +481,7 @@ void game_engine(char *b, int turn){
           printf("\nBLACKS TURN\n");
         }
         printf("You can eat \n");
-        eat(b, turn);
+        eatui(b, turn);
         if(caneat(b, turn) == 0){
           if(turn == 0){
             turn = 1;
