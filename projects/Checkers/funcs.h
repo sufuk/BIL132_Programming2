@@ -162,7 +162,7 @@ int caneat(char *b, int turn){
     //white
     for(i = 0; i < COLUMNS*ROWS ; i++){
       if(*(b + i) == WHITE){
-        if(((*(b + i - 1) == BLACK) && (*(b + i - 2) == WHITEWOOD))&&((i-1) % 8 != 0)){
+        if(((*(b + i - 1) == BLACK) && (*(b + i - 2) == WHITEWOOD))&&(i % 8 != 0)){
           n++;
         }
         if((*(b + i + 1) == BLACK) && (*(b + i + 2) == WHITEWOOD)){
@@ -185,7 +185,7 @@ int caneat(char *b, int turn){
             n++;
           }
         }
-        if((*(b + i + 1) == WHITE) && (*(b + i + 2) == WHITEWOOD)){
+        if(((*(b + i + 1) == WHITE) && (*(b + i + 2) == WHITEWOOD))&&((i + 1) % 8 != 0)){
           n++;
         }
         if((*(b + i - 8) == WHITE) && (*(b + i - 16) == WHITEWOOD)){
