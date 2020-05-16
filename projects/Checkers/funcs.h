@@ -55,6 +55,20 @@ void print_board(char *b){
 void destroy_board(char *b){
 	free(b);
 }
+void make_dama(char *b){
+  int i;
+  int j;
+  for(i = 0 ; i < 8 ; i++){
+    if(*(b + i) == BLACK){
+      *(b + i) = BLACKDAMA;
+    }
+  }
+  for(j = 56; j < 64 ; j++){
+    if(*(b + j) == WHITE){
+      *(b + j) = WHITEDAMA;
+    }
+  }
+}
 int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
   int index0 = (y0 * 8) + x0;
   int n;
@@ -96,9 +110,12 @@ int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
         n = 0;
       }
     }
+    else if(*(b + index0) == WHITEDAMA){
+      
+    }
   }
 else if(turn == 1){
-    if(*(b + index0) == 'B'){
+    if(*(b + index0) == BLACK){
       if(index1 == (index0 + 1)){
         //RIGHT
         if(*(b + index1) != '_'){
@@ -449,21 +466,6 @@ int checkmatchstatus(char *b){
     n = 2;
   }
 return n;
-}
-
-void make_dama(char *b){
-  int i;
-  int j;
-  for(i = 0 ; i < 8 ; i++){
-    if(*(b + i) == BLACK){
-      *(b + i) = BLACKDAMA;
-    }
-  }
-  for(j = 56; j < 64 ; j++){
-    if(*(b + j) == WHITE){
-      *(b + j) = WHITEDAMA;
-    }
-  }
 }
 void game_engine(char *b, int turn){
   int lap = 1;
