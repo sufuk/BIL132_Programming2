@@ -111,9 +111,37 @@ int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
       }
     }
     else if(*(b + index0) == WHITEDAMA){
-      
+      if((index0>index1) && ((index0-index1) % 8 == 0)){
+        //BACKWARD
+        if(*(b + index1) == WHITEWOOD){
+          int index2;
+          int breaker = 0;
+          for(index2 = index1 + 8 ; (index2 < index0) && (breaker != 1) ; ){
+            if(*(b + index2) != WHITEWOOD){
+              n = 0;
+              breaker = 1;
+            }
+            else if(*(b + index2) == WHITEWOOD){
+              n = 1;
+            }
+          }
+        }
+        else if(*(b + index1) != WHITEWOOD){
+          n = 0;
+        }
+      }
+      else if((index1>index0) && ((index0-index1) % 8 == 0)){
+        //FOWARD
+      }
+      else if(index0>index1){
+        //LEFT
+      }
+      else if(index1>index0){
+        //RIGHT
+      }
     }
   }
+  //BLACK
 else if(turn == 1){
     if(*(b + index0) == BLACK){
       if(index1 == (index0 + 1)){
