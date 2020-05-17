@@ -157,17 +157,47 @@ int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
           n = 0;
         }
         else if((index0 - index1) < 8){
-          int index2 = index0 - index1;
+          int index2;
           if(index0 % 8  == 0){
             n = 0;
           }
           else if(index0 % 8 != 0){
+            for(index2 = index0  ; (index2 % 8) != 0 ; ){
+              index2 -= 1;
+              if(*(b + index2) == WHITEWOOD){
+                n = 1;
+              }
+              else if(*(b + index2) != WHITEWOOD){
+                n = 0;
+              }
+            }
           }
         }
       }
       else if(index1>index0){
         //RIGHT
+        if((index1 - index0) >= 8){
+          n = 0;
+        }
+        else if((index1 - index0) < 8){
+          int index2;
+          if((index0 + 1) % 8  == 0){
+            n = 0;
+          }
+          else if((index0 + 1) % 8 != 0){
+            for(index2 = index0  ; ((index2 + 1) % 8) != 0 ; ){
+              index2 += 1;
+              if(*(b + index2) == WHITEWOOD){
+                n = 1;
+              }
+              else if(*(b + index2) != WHITEWOOD){
+                n = 0;
+              }
+            }
+          }
+        }
       }
+
     }
   }
   //BLACK
