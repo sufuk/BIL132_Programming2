@@ -279,7 +279,7 @@ else if(turn == 1){
           }
         }
         else if(*(b + index1) != WHITEWOOD){
-
+          n = 0;
         }
       }
       else if(index0>index1){
