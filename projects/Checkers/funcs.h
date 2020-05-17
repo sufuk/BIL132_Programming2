@@ -148,7 +148,7 @@ int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
           }
         }
         else if(*(b + index1) != WHITEWOOD){
-
+          n = 0;
         }
       }
       else if(index0>index1){
@@ -506,7 +506,6 @@ void move(char *b, int turn){
     }
   }
 }
-
 void eat(char *b, int turn){
   printf("\n Please enter which piece you want to use\n");
   int x0;
