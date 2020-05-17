@@ -111,7 +111,7 @@ int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
       }
     }
     else if(*(b + index0) == WHITEDAMA){
-      if((index0>index1) && ((index0-index1) % 8 == 0)){
+      if((index0 > index1) && ((index0 - index1) % 8 == 0)){
         //BACKWARD
         if(*(b + index1) == WHITEWOOD){
           int index2;
@@ -124,6 +124,7 @@ int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
             else if(*(b + index2) == WHITEWOOD){
               n = 1;
             }
+            index2 += 8;
           }
         }
         else if(*(b + index1) != WHITEWOOD){
@@ -132,9 +133,37 @@ int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
       }
       else if((index1>index0) && ((index0-index1) % 8 == 0)){
         //FOWARD
+        if(*(b + index1) == WHITEWOOD){
+          int index2;
+          int breaker = 0;
+          for(index2 = index1 - 8 ; (index2 > index0) && (breaker != 1) ; ){
+            if(*(b + index2) != WHITEWOOD){
+              n = 0;
+              breaker = 1;
+            }
+            else if(*(b + index2) == WHITEWOOD){
+              n = 1;
+            }
+            index2 -= 8;
+          }
+        }
+        else if(*(b + index1) != WHITEWOOD){
+
+        }
       }
       else if(index0>index1){
         //LEFT
+        if((index0 - index1) >= 8){
+          n = 0;
+        }
+        else if((index0 - index1) < 8){
+          int index2 = index0 - index1;
+          if(index0 % 8  == 0){
+            n = 0;
+          }
+          else if(index0 % 8 != 0){
+          }
+        }
       }
       else if(index1>index0){
         //RIGHT
