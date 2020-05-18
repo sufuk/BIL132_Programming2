@@ -496,7 +496,7 @@ void moveui2(char *b, int turn){
       scanf("%d", &x0);
       printf("\nY: ");
       scanf("%d", &y0);
-      index0 = (10*y0) + x0;
+      index0 = (8*y0) + x0;
       if(*(b + index0) == WHITE){
         printf("\nPlease enter where you wanna move\n");
         printf("\n[1] SOUTH\n");
@@ -562,7 +562,7 @@ void moveui2(char *b, int turn){
       scanf("%d", &x0);
       printf("\nY: ");
       scanf("%d", &y0);
-      index0 = (10*y0) + x0;
+      index0 = (8*y0) + x0;
       if(*(b + index0) == BLACK){
         printf("\nPlease enter where you wanna move\n");
         printf("\n[1] NORTH\n");
@@ -661,9 +661,9 @@ return n;
 }
 int isvalid_dama_eat(char *b, int turn, int x0, int y0, int x1, int y1, int x2, int y2, int direction){
   int n;
-  int index0 = (10 * y0) + x0;
-  int index1 = (10 * y1) + x1;
-  int index2 = (10 * y2) + x2;
+  int index0 = (8 * y0) + x0;
+  int index1 = (8 * y1) + x1;
+  int index2 = (8 * y2) + x2;
   if(turn == 0){
     if(*(b + index0) == WHITEDAMA){
       if((*(b + index1) == BLACK) || (*(b + index1) == BLACKDAMA)){
@@ -847,7 +847,7 @@ void eatui2(char *b, int turn){
       scanf("%d", &x0);
       printf("\nY: ");
       scanf("%d", &y0);
-      index0 = (10 * y0) + x0;
+      index0 = (8 * y0) + x0;
       if(*(b + index0) == BLACK){
         printf("\nPlease enter which direction you eat\n");
         printf("[1]FOWARD\n[2]LEFT\n[3]RIGHT\n");
