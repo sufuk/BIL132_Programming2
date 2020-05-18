@@ -777,70 +777,129 @@ void eatui2(char *b, int turn){
   int a;
   int z;
   int index0;
-  while(breaker != 1){
-    printf("\n Please enter which piece you want to use\n");
-    printf("X: ");
-    scanf("%d", &x0);
-    printf("\nY: ");
-    scanf("%d", &y0);
-    index0 = (10 * y0) + x0;
-    if((*(b + index0) == WHITE) || (*(b + index0) == BLACK)){
-      printf("\nPlease enter which direction you eat\n");
-      printf("[1]FOWARD\n[2]LEFT\n[3]RIGHT\n");
-      scanf("%d", &a);
-      z = isvalid_eat(b, turn, x0, y0, a);
-      if(z == 1){
-        if(a == 1){
-          //foward
-          if(turn == 0){
+  if(turn == 0){
+    while(breaker != 1){
+      printf("\n Please enter which piece you want to use\n");
+      printf("X: ");
+      scanf("%d", &x0);
+      printf("\nY: ");
+      scanf("%d", &y0);
+      index0 = (8 * y0) + x0;
+      if(*(b + index0) == WHITE){
+        printf("\nPlease enter which direction you eat\n");
+        printf("[1]FOWARD\n[2]LEFT\n[3]RIGHT\n");
+        scanf("%d", &a);
+        z = isvalid_eat(b, turn, x0, y0, a);
+        if(z == 1){
+          if(a == 1){
             eating(b, turn, x0, y0, x0, y0+1, x0, y0+2);
             breaker = 1;
           }
-          else if(turn == 1){
-            eating(b, turn, x0, y0, x0, y0-1, x0, y0-2);
+          else if(a == 2){
+            eating(b, turn, x0, y0, x0-1, y0, x0-2, y0);
+            breaker = 1;
+          }
+          else if(a == 3){
+            eating(b, turn, x0, y0, x0+1, y0, x0+2, y0);
             breaker = 1;
           }
         }
-        else if(a == 2){
-          //left
-          eating(b, turn, x0, y0, x0-1, y0, x0-2, y0);
-          breaker = 1;
-        }
-        else if(a == 3){
-          //right
-          eating(b, turn, x0, y0, x0+1, y0, x0+2, y0);
-          breaker = 1;
+        else{
+          printf("\nincorect input please try again\n");
         }
       }
-      else if(z == 0){
-        printf("\nYou cant eat like that\n");
+      else if(*(b + index0) == WHITEDAMA){
+        int x1, y1, z1, x2, y2, direction;
+        printf("\nPlease enter eating direction\n");
+        printf("\n[1] NORTH\n");
+        printf("\n[2] SOUTH\n");
+        printf("\n[3] WEST\n");
+        printf("\n[4] EAST\n");
+        scanf("%d", &direction);
+        printf("\nPlease enter which piece you wanna eat\n");
+        printf("X: ");
+        scanf("%d", &x1);
+        printf("\nY: ");
+        scanf("%d", &y1);
+        printf("\nPlease enter where you will be after eating\n");
+        printf("X: ");
+        scanf("%d", &x2);
+        printf("\nY: ");
+        scanf("%d", &y2);
+        z1 = isvalid_dama_eat(b, turn, x0, y0, x1, y1, x2, y2, direction);
+        if(z1 == 1){
+          eating(b, turn, x0, y0, x1, y1, x2, y2);
+          breaker = 1;
+        }
+        else if(z1 == 0){
+          printf("\n invalid input please try again\n");
+        }
+      }
+      else{
+        printf("\n incorect input please try again\n");
       }
     }
-    else if((*(b + index0) == WHITEDAMA) || (*(b + index0) == BLACKDAMA)){
-      int x1, y1, z1, x2, y2, direction;
-      printf("\nPlease enter eating direction\n");
-      printf("\n[1] NORTH\n");
-      printf("\n[2] SOUTH\n");
-      printf("\n[3] WEST\n");
-      printf("\n[4] EAST\n");
-      scanf("%d", &direction);
-      printf("\nPlease enter which piece you wanna eat\n");
+  }
+  if(turn == 1){
+    while(breaker != 1){
+      printf("\n Please enter which piece you want to use\n");
       printf("X: ");
-      scanf("%d", &x1);
+      scanf("%d", &x0);
       printf("\nY: ");
-      scanf("%d", &y1);
-      printf("\nPlease enter where you will be after eating\n");
-      printf("X: ");
-      scanf("%d", &x2);
-      printf("\nY: ");
-      scanf("%d", &y2);
-      z1 = isvalid_dama_eat(b, turn, x0, y0, x1, y1, x2, y2, direction);
-      if(z1 == 1){
-        eating(b, turn, x0, y0, x1, y1, x2, y2);
-        breaker = 1;
+      scanf("%d", &y0);
+      index0 = (10 * y0) + x0;
+      if(*(b + index0) == BLACK){
+        printf("\nPlease enter which direction you eat\n");
+        printf("[1]FOWARD\n[2]LEFT\n[3]RIGHT\n");
+        scanf("%d", &a);
+        z = isvalid_eat(b, turn, x0, y0, a);
+        if(z == 1){
+          if(a == 1){
+            eating(b, turn, x0, y0, x0, y0-1, x0, y0-2);
+            breaker = 1;
+          }
+          else if(a == 2){
+            eating(b, turn, x0, y0, x0-1, y0, x0-2, y0);
+            breaker = 1;
+          }
+          else if(a == 3){
+            eating(b, turn, x0, y0, x0+1, y0, x0+2, y0);
+            breaker = 1;
+          }
+        }
+        else{
+          printf("\nincorect input please try again\n");
+        }
       }
-      else if(z1 == 0){
-        printf("\n invalid input please try again\n");
+      else if(*(b + index0) == BLACKDAMA){
+        int x1, y1, z1, x2, y2, direction;
+        printf("\nPlease enter eating direction\n");
+        printf("\n[1] NORTH\n");
+        printf("\n[2] SOUTH\n");
+        printf("\n[3] WEST\n");
+        printf("\n[4] EAST\n");
+        scanf("%d", &direction);
+        printf("\nPlease enter which piece you wanna eat\n");
+        printf("X: ");
+        scanf("%d", &x1);
+        printf("\nY: ");
+        scanf("%d", &y1);
+        printf("\nPlease enter where you will be after eating\n");
+        printf("X: ");
+        scanf("%d", &x2);
+        printf("\nY: ");
+        scanf("%d", &y2);
+        z1 = isvalid_dama_eat(b, turn, x0, y0, x1, y1, x2, y2, direction);
+        if(z1 == 1){
+          eating(b, turn, x0, y0, x1, y1, x2, y2);
+          breaker = 1;
+        }
+        else if(z1 == 0){
+          printf("\n invalid input please try again\n");
+        }
+      }
+      else{
+        printf("\n incorect input please try again\n");
       }
     }
   }
