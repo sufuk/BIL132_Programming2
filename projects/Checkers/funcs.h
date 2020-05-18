@@ -458,15 +458,29 @@ void eating(char *b, int turn, int x4, int y4, int x5, int y5, int x6, int y6){
   int index6 = y6*8 + x6;
   if(turn == 0){
     //whıte turn
+    if(*(b + index4) == WHITE){
     *(b + index4) = WHITEWOOD;
     *(b + index5) = WHITEWOOD;
     *(b + index6) = WHITE;
+    }
+    else if(*(b + index4) == WHITEDAMA){
+    *(b + index4) = WHITEWOOD;
+    *(b + index5) = WHITEWOOD;
+    *(b + index6) = WHITEDAMA;
+    }
   }
   if(turn == 1){
     //black turn
+    if(*(b + index4) == BLACK){
     *(b + index4) = WHITEWOOD;
     *(b + index5) = WHITEWOOD;
     *(b + index6) = BLACK;
+    }
+    else if(*(b + index4) == BLACKDAMA){
+    *(b + index4) = WHITEWOOD;
+    *(b + index5) = WHITEWOOD;
+    *(b + index6) = BLACKDAMA;
+    }
   }
 }
 void move(char *b, int turn){
@@ -495,77 +509,216 @@ void move(char *b, int turn){
     int z0;
     int breaker = 0;
     while(breaker != 1){
-    printf("\n Please enter which piece you wanna move\n");
-    printf("X: ");
-    scanf("%d", &x0);
-    printf("\nY: ");
-    scanf("%d", &y0);
-    printf("\nPlease enter where you wanna move\n");
-    printf("\n[1] FOWARD\n");
-    printf("\n[2] LEFT\n");
-    printf("\n[3] RIGHT\n");
-    int a0;
-    scanf("%d", &a0);
-    if(turn == 0){
-      if(a0 == 1){
-        z0 = isvalidmove(b, turn, x0, y0, x0, y0+1);
-        if(z0 == 1){
-          movement(b, turn, x0, y0, x0, y0+1);
-          breaker = 1;
+      printf("\n Please enter which piece you wanna move\n");
+      printf("X: ");
+      scanf("%d", &x0);
+      printf("\nY: ");
+      scanf("%d", &y0);
+        printf("\nPlease enter where you wanna move\n");
+        printf("\n[1] FOWARD\n");
+        printf("\n[2] LEFT\n");
+        printf("\n[3] RIGHT\n");
+        int a0;
+        scanf("%d", &a0);
+        if(turn == 0){
+          if(a0 == 1){
+            z0 = isvalidmove(b, turn, x0, y0, x0, y0+1);
+            if(z0 == 1){
+              movement(b, turn, x0, y0, x0, y0+1);
+              breaker = 1;
+            }
+            else if(z0 == 0){
+              printf("\nincorrect input try again\n");
+            }
+          }
+          else if(a0 == 2){
+            z0 = isvalidmove(b, turn, x0, y0, x0-1, y0);
+            if(z0 == 1){
+              movement(b, turn, x0, y0, x0-1, y0);
+              breaker = 1;
+            }
+            else if(z0 == 0){
+              printf("\nincorrect input try again\n");
+            }
+          }
+          else if(a0 == 3){
+            z0 = isvalidmove(b, turn, x0, y0, x0+1, y0);
+            if(z0 == 1){
+              movement(b, turn, x0, y0, x0+1, y0);
+              breaker = 1;
+            }
+            else if(z0 == 0){
+              printf("\nincorrect input try again\n");
+            }
+          }
         }
-        else if(z0 == 0){
-          printf("\nincorrect input try again\n");
+        else if(turn == 1){
+          if(a0 == 1){
+            z0 = isvalidmove(b, turn, x0, y0, x0, y0-1);
+            if(z0 == 1){
+              movement(b, turn, x0, y0, x0, y0-1);
+              breaker = 1;
+            }
+            else if(z0 == 0){
+              printf("\nincorrect input try again\n");
+            }
+          }
+          else if(a0 == 2){
+            z0 = isvalidmove(b, turn, x0, y0, x0-1, y0);
+            if(z0 == 1){
+              movement(b, turn, x0, y0, x0-1, y0);
+              breaker = 1;
+            }
+            else if(z0 == 0){
+              printf("\nincorrect input try again\n");
+            }
+          }
+          else if(a0 == 3){
+            z0 = isvalidmove(b, turn, x0, y0, x0+1, y0);
+            if(z0 == 1){
+              movement(b, turn, x0, y0, x0+1, y0);
+              breaker = 1;
+            }
+            else if(z0 == 0){
+              printf("\nincorrect input try again\n");
+            }
+          }
+        }
+    }
+}
+void moveui2(char *b, int turn){
+  int x0;
+  int y0;
+  int z0;
+  int index0;
+  int breaker = 0;
+  if(turn == 0){
+    while(breaker != 1){
+      printf("\nPlease enter which piece you wanna move\n");
+      printf("X: ");
+      scanf("%d", &x0);
+      printf("\nY: ");
+      scanf("%d", &y0);
+      index0 = (10*y0) + x0;
+      if(*(b + index0) == WHITE){
+        printf("\nPlease enter where you wanna move\n");
+        printf("\n[1] SOUTH\n");
+        printf("\n[2] WEST\n");
+        printf("\n[3] EAST\n");
+        int a0;
+        scanf("%d", &a0);
+        if(a0 == 1){
+          z0 = isvalidmove(b, turn, x0, y0, x0, y0+1);
+          if(z0 == 1){
+            movement(b, turn, x0, y0, x0, y0+1);
+            breaker = 1;
+          }
+          else if(z0 == 0){
+            printf("\nincorrect input try again\n");
+          }
+        }
+        else if(a0 == 2){
+          z0 = isvalidmove(b, turn, x0, y0, x0-1, y0);
+          if(z0 == 1){
+            movement(b, turn, x0, y0, x0-1, y0);
+            breaker = 1;
+          }
+          else if(z0 == 0){
+            printf("\nincorrect input try again\n");
+          }
+        }
+        else if(a0 == 3){
+          z0 = isvalidmove(b, turn, x0, y0, x0+1, y0);
+          if(z0 == 1){
+            movement(b, turn, x0, y0, x0+1, y0);
+            breaker = 1;
+          }
+          else if(z0 == 0){
+            printf("\nincorrect input try again\n");
+          }
         }
       }
-      else if(a0 == 2){
-        z0 = isvalidmove(b, turn, x0, y0, x0-1, y0);
-        if(z0 == 1){
-          movement(b, turn, x0, y0, x0-1, y0);
+      if(*(b + index0) == WHITEDAMA){
+        printf("\nPlease enter where you wanna move\n");
+        int x1;
+        int y1;
+        printf("\nX: ");
+        scanf("%d", &x1);
+        printf("\nY: ");
+        scanf("%d", &y1);
+        int z1;
+        z1 = isvalidmove(b, turn, x0, y0, x1, y1);
+        if(z1 == 1){
+          movement(b, turn, x0, y0, x1, y1);
           breaker = 1;
         }
-        else if(z0 == 0){
-          printf("\nincorrect input try again\n");
-        }
-      }
-      else if(a0 == 3){
-        z0 = isvalidmove(b, turn, x0, y0, x0+1, y0);
-        if(z0 == 1){
-          movement(b, turn, x0, y0, x0+1, y0);
-          breaker = 1;
-        }
-        else if(z0 == 0){
+        else if(z1 == 0){
           printf("\nincorrect input try again\n");
         }
       }
     }
-    else if(turn == 1){
-      if(a0 == 1){
-        z0 = isvalidmove(b, turn, x0, y0, x0, y0-1);
-        if(z0 == 1){
-          movement(b, turn, x0, y0, x0, y0-1);
-          breaker = 1;
+  }
+  if(turn == 1){
+    while(breaker != 1){
+      printf("\nPlease enter which piece you wanna move\n");
+      printf("X: ");
+      scanf("%d", &x0);
+      printf("\nY: ");
+      scanf("%d", &y0);
+      index0 = (10*y0) + x0;
+      if(*(b + index0) == BLACK){
+        printf("\nPlease enter where you wanna move\n");
+        printf("\n[1] NORTH\n");
+        printf("\n[2] WEST\n");
+        printf("\n[3] EAST\n");
+        int a0;
+        scanf("%d", &a0);
+        if(a0 == 1){
+          z0 = isvalidmove(b, turn, x0, y0, x0, y0-1);
+          if(z0 == 1){
+            movement(b, turn, x0, y0, x0, y0-1);
+            breaker = 1;
+          }
+          else if(z0 == 0){
+            printf("\nincorrect input try again\n");
+          }
         }
-        else if(z0 == 0){
-          printf("\nincorrect input try again\n");
+        else if(a0 == 2){
+          z0 = isvalidmove(b, turn, x0, y0, x0-1, y0);
+          if(z0 == 1){
+            movement(b, turn, x0, y0, x0-1, y0);
+            breaker = 1;
+          }
+          else if(z0 == 0){
+            printf("\nincorrect input try again\n");
+          }
+        }
+        else if(a0 == 3){
+          z0 = isvalidmove(b, turn, x0, y0, x0+1, y0);
+          if(z0 == 1){
+            movement(b, turn, x0, y0, x0+1, y0);
+            breaker = 1;
+          }
+          else if(z0 == 0){
+            printf("\nincorrect input try again\n");
+          }
         }
       }
-      else if(a0 == 2){
-        z0 = isvalidmove(b, turn, x0, y0, x0-1, y0);
-        if(z0 == 1){
-          movement(b, turn, x0, y0, x0-1, y0);
+      if(*(b + index0) == BLACKDAMA){
+        printf("\nPlease enter where you wanna move\n");
+        int x1;
+        int y1;
+        printf("\nX: ");
+        scanf("%d", &x1);
+        printf("\nY: ");
+        scanf("%d", &y1);
+        int z1;
+        z1 = isvalidmove(b, turn, x0, y0, x1, y1);
+        if(z1 == 1){
+          movement(b, turn, x0, y0, x1, y1);
           breaker = 1;
         }
-        else if(z0 == 0){
-          printf("\nincorrect input try again\n");
-        }
-      }
-      else if(a0 == 3){
-        z0 = isvalidmove(b, turn, x0, y0, x0+1, y0);
-        if(z0 == 1){
-          movement(b, turn, x0, y0, x0+1, y0);
-          breaker = 1;
-        }
-        else if(z0 == 0){
+        else if(z1 == 0){
           printf("\nincorrect input try again\n");
         }
       }
@@ -742,7 +895,7 @@ void game_engine(char *b, int turn){
       if(turn == 1){
         printf("\nBLACKS TURN\n");
       }
-      moveui(b, turn);
+      moveui2(b, turn);
       if(turn == 0){
         turn = 1;
       }
