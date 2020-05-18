@@ -364,6 +364,39 @@ int caneat(char *b, int turn){
           n++;
         }
       }
+      if(*(b + i) == WHITEDAMA){
+        int a;
+        for(a = i + 1 ; ((a % 8) != 0) && a < 64 ; a++ ){
+          if((*(b + a) == BLACK) || (*(b + a) == BLACKDAMA)){
+            if(*(b + a + 1) == WHITEWOOD){
+              n++;
+            }
+          }
+        }
+        for(a = i - 1 ; ((i % 8) != 0) && i > 0 ; a--){
+          if((*(b + a) == BLACK) || (*(b + a) == BLACKDAMA)){
+            if(*(b + a - 1) == WHITEWOOD){
+              n++;
+            }
+          }
+        }
+        for(a = i - 8 ; a >= 0  ; ){
+          if((*(b + a) == BLACK) || (*(b + a) == BLACKDAMA)){
+            if(*(b + a - 16) == WHITEWOOD){
+              n++;
+            }
+          }
+          a -= 8;
+        }
+        for(a = i + 8 ; a < 64  ; ){
+          if((*(b + a) == BLACK) || (*(b + a) == BLACKDAMA)){
+            if(*(b + a + 16) == WHITEWOOD){
+              n++;
+            }
+          }
+          a += 8;
+        }
+      }
     }
   }
   else if(turn == 1){
@@ -380,6 +413,39 @@ int caneat(char *b, int turn){
         }
         if((*(b + i - 8) == WHITE) && (*(b + i - 16) == WHITEWOOD)){
           n++;
+        }
+      }
+      if(*(b + i) == BLACKDAMA){
+        int a;
+        for(a = i + 1 ; ((a % 8) != 0) && a < 64 ; a++ ){
+          if((*(b + a) == WHITE) || (*(b + a) == WHITEDAMA)){
+            if(*(b + a + 1) == WHITEWOOD){
+              n++;
+            }
+          }
+        }
+        for(a = i - 1 ; ((i % 8) != 0) && i > 0 ; a--){
+          if((*(b + a) == WHITE) || (*(b + a) == WHITEDAMA)){
+            if(*(b + a - 1) == WHITEWOOD){
+              n++;
+            }
+          }
+        }
+        for(a = i - 8 ; a >= 0  ; ){
+          if((*(b + a) == WHITE) || (*(b + a) == WHITEDAMA)){
+            if(*(b + a - 16) == WHITEWOOD){
+              n++;
+            }
+          }
+          a -= 8;
+        }
+        for(a = i + 8 ; a < 64  ; ){
+          if((*(b + a) == WHITE) || (*(b + a) == WHITEDAMA)){
+            if(*(b + a + 16) == WHITEWOOD){
+              n++;
+            }
+          }
+          a += 8;
         }
       }
     }
