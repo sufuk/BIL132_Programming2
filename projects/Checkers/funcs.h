@@ -8,7 +8,6 @@
 #define WHITEDAMA '#'
 #define BLACKDAMA '$'
 #define WHITEWOOD '_'
-//#define DARKWOOD  '#'
 #define INITIAL_FILE	"board.txt"
 char* checkersboard(){
   char *p = malloc(ROWS * COLUMNS);
@@ -69,7 +68,7 @@ void make_dama(char *b){
     }
   }
 }
-int isvalidmove(char *b, int turn, int x0, int y0, int x1, int y1){
+int is_valid_move(char *b, int turn, int x0, int y0, int x1, int y1){
   int index0 = (y0 * 8) + x0;
   int n;
   int index1 = (y1 * 8) + x1;
@@ -345,7 +344,7 @@ void movement(char *b, int turn, int x0, int y0, int x1, int y1){
     *(b + index2) = WHITEWOOD;
   }
 }
-int caneat(char *b, int turn){
+int can_eat(char *b, int turn){
   int n = 0;
   int i;
   if(turn == 0){
@@ -483,7 +482,7 @@ void eating(char *b, int turn, int x4, int y4, int x5, int y5, int x6, int y6){
     }
   }
 }
-void moveui2(char *b, int turn){
+void move(char *b, int turn){
   int x0;
   int y0;
   int z0;
@@ -505,7 +504,7 @@ void moveui2(char *b, int turn){
         int a0;
         scanf("%d", &a0);
         if(a0 == 1){
-          z0 = isvalidmove(b, turn, x0, y0, x0, y0+1);
+          z0 = is_valid_move(b, turn, x0, y0, x0, y0+1);
           if(z0 == 1){
             movement(b, turn, x0, y0, x0, y0+1);
             breaker = 1;
@@ -515,7 +514,7 @@ void moveui2(char *b, int turn){
           }
         }
         else if(a0 == 2){
-          z0 = isvalidmove(b, turn, x0, y0, x0-1, y0);
+          z0 = is_valid_move(b, turn, x0, y0, x0-1, y0);
           if(z0 == 1){
             movement(b, turn, x0, y0, x0-1, y0);
             breaker = 1;
@@ -525,7 +524,7 @@ void moveui2(char *b, int turn){
           }
         }
         else if(a0 == 3){
-          z0 = isvalidmove(b, turn, x0, y0, x0+1, y0);
+          z0 = is_valid_move(b, turn, x0, y0, x0+1, y0);
           if(z0 == 1){
             movement(b, turn, x0, y0, x0+1, y0);
             breaker = 1;
@@ -544,7 +543,7 @@ void moveui2(char *b, int turn){
         printf("\nY: ");
         scanf("%d", &y1);
         int z1;
-        z1 = isvalidmove(b, turn, x0, y0, x1, y1);
+        z1 = is_valid_move(b, turn, x0, y0, x1, y1);
         if(z1 == 1){
           movement(b, turn, x0, y0, x1, y1);
           breaker = 1;
@@ -571,7 +570,7 @@ void moveui2(char *b, int turn){
         int a0;
         scanf("%d", &a0);
         if(a0 == 1){
-          z0 = isvalidmove(b, turn, x0, y0, x0, y0-1);
+          z0 = is_valid_move(b, turn, x0, y0, x0, y0-1);
           if(z0 == 1){
             movement(b, turn, x0, y0, x0, y0-1);
             breaker = 1;
@@ -581,7 +580,7 @@ void moveui2(char *b, int turn){
           }
         }
         else if(a0 == 2){
-          z0 = isvalidmove(b, turn, x0, y0, x0-1, y0);
+          z0 = is_valid_move(b, turn, x0, y0, x0-1, y0);
           if(z0 == 1){
             movement(b, turn, x0, y0, x0-1, y0);
             breaker = 1;
@@ -591,7 +590,7 @@ void moveui2(char *b, int turn){
           }
         }
         else if(a0 == 3){
-          z0 = isvalidmove(b, turn, x0, y0, x0+1, y0);
+          z0 = is_valid_move(b, turn, x0, y0, x0+1, y0);
           if(z0 == 1){
             movement(b, turn, x0, y0, x0+1, y0);
             breaker = 1;
@@ -610,7 +609,7 @@ void moveui2(char *b, int turn){
         printf("\nY: ");
         scanf("%d", &y1);
         int z1;
-        z1 = isvalidmove(b, turn, x0, y0, x1, y1);
+        z1 = is_valid_move(b, turn, x0, y0, x1, y1);
         if(z1 == 1){
           movement(b, turn, x0, y0, x1, y1);
           breaker = 1;
@@ -770,7 +769,7 @@ int isvalid_dama_eat(char *b, int turn, int x0, int y0, int x1, int y1, int x2, 
   }
   return n;
 }
-void eatui2(char *b, int turn){
+void eat(char *b, int turn){
   int x0;
   int y0;
   int breaker = 0;
@@ -939,8 +938,8 @@ void game_engine(char *b, int turn){
     print_board(b);
     printf("\n\n");
     printf("\nLap: %d\n", lap);
-    if(caneat(b, turn) != 0){
-      while(caneat(b, turn) != 0){
+    if(can_eat(b, turn) != 0){
+      while(can_eat(b, turn) != 0){
         if(turn == 0){
           printf("\nWHITES TURN\n");
         }
@@ -948,8 +947,8 @@ void game_engine(char *b, int turn){
           printf("\nBLACKS TURN\n");
         }
         printf("You can eat \n");
-        eatui2(b, turn);
-        if(caneat(b, turn) == 0){
+        eat(b, turn);
+        if(can_eat(b, turn) == 0){
           if(turn == 0){
             turn = 1;
           }
@@ -962,14 +961,14 @@ void game_engine(char *b, int turn){
         printf("\n\n");
       }
     }
-    else if(caneat(b, turn) == 0){
+    else if(can_eat(b, turn) == 0){
       if(turn == 0){
         printf("\nWHITES TURN\n");
       }
       if(turn == 1){
         printf("\nBLACKS TURN\n");
       }
-      moveui2(b, turn);
+      move(b, turn);
       if(turn == 0){
         turn = 1;
       }
