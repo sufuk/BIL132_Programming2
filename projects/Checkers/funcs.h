@@ -352,15 +352,15 @@ int caneat(char *b, int turn){
     //white
     for(i = 0; i < COLUMNS*ROWS ; i++){
       if(*(b + i) == WHITE){
-        if(((*(b + i - 1) == BLACK) && (*(b + i - 2) == WHITEWOOD))&&(i % 8 != 0)){
+        if((((*(b + i - 1) == BLACK) || (*(b + i - 1) == BLACKDAMA)) && (*(b + i - 2) == WHITEWOOD))&&(i % 8 != 0)){
           n++;
         }
-        if((*(b + i + 1) == BLACK) && (*(b + i + 2) == WHITEWOOD)){
+        if(((*(b + i + 1) == BLACK) || (*(b + i + 1) == BLACKDAMA)) && (*(b + i + 2) == WHITEWOOD)){
           if(((i + 1) % 8) != 0){
             n++;
           }
         }
-        if((*(b + i + 8) == BLACK) && (*(b + i + 16) == WHITEWOOD)){
+        if(((*(b + i + 8) == BLACK) || (*(b + i + 8) == BLACKDAMA)) && (*(b + i + 16) == WHITEWOOD)){
           n++;
         }
       }
@@ -403,15 +403,15 @@ int caneat(char *b, int turn){
     //black
     for(i = 0; i < COLUMNS*ROWS ; i++){
       if(*(b + i) == BLACK){
-        if((*(b + i - 1) == WHITE) && (*(b + i - 2) == WHITEWOOD)){
+        if(((*(b + i - 1) == WHITE) || (*(b + i - 1) == WHITEDAMA)) && (*(b + i - 2) == WHITEWOOD)){
           if((i % 8) != 0){
             n++;
           }
         }
-        if(((*(b + i + 1) == WHITE) && (*(b + i + 2) == WHITEWOOD))&&((i + 1) % 8 != 0)){
+        if((((*(b + i + 1) == WHITE) || (*(b + i + 1) == WHITEDAMA)) && (*(b + i + 2) == WHITEWOOD))&&((i + 1) % 8 != 0)){
           n++;
         }
-        if((*(b + i - 8) == WHITE) && (*(b + i - 16) == WHITEWOOD)){
+        if(((*(b + i - 8) == WHITE) || (*(b + i - 8) == WHITEDAMA)) && (*(b + i - 16) == WHITEWOOD)){
           n++;
         }
       }
@@ -482,109 +482,6 @@ void eating(char *b, int turn, int x4, int y4, int x5, int y5, int x6, int y6){
     *(b + index6) = BLACKDAMA;
     }
   }
-}
-void move(char *b, int turn){
-  printf("\n Please enter which piece you wanna move\n");
-  int x0;
-  int y0;
-  int x1;
-  int y1;
-  printf("X: ");
-  scanf("%d", &x0);
-  printf("\nY: ");
-  scanf("%d", &y0);
-  printf("\nPlease enter where you wanna move\n");
-  printf("X: ");
-  scanf("%d", &x1);
-  printf("\nY: ");
-  scanf("%d", &y1);
-  int z0 = isvalidmove(b, turn, x0, y0, x1, y1);
-  if(z0 == 1){
-    movement(b, turn, x0, y0, x1, y1);
-  }
-}
-  void moveui(char *b, int turn){//BUG
-    int x0;
-    int y0;
-    int z0;
-    int breaker = 0;
-    while(breaker != 1){
-      printf("\n Please enter which piece you wanna move\n");
-      printf("X: ");
-      scanf("%d", &x0);
-      printf("\nY: ");
-      scanf("%d", &y0);
-        printf("\nPlease enter where you wanna move\n");
-        printf("\n[1] FOWARD\n");
-        printf("\n[2] LEFT\n");
-        printf("\n[3] RIGHT\n");
-        int a0;
-        scanf("%d", &a0);
-        if(turn == 0){
-          if(a0 == 1){
-            z0 = isvalidmove(b, turn, x0, y0, x0, y0+1);
-            if(z0 == 1){
-              movement(b, turn, x0, y0, x0, y0+1);
-              breaker = 1;
-            }
-            else if(z0 == 0){
-              printf("\nincorrect input try again\n");
-            }
-          }
-          else if(a0 == 2){
-            z0 = isvalidmove(b, turn, x0, y0, x0-1, y0);
-            if(z0 == 1){
-              movement(b, turn, x0, y0, x0-1, y0);
-              breaker = 1;
-            }
-            else if(z0 == 0){
-              printf("\nincorrect input try again\n");
-            }
-          }
-          else if(a0 == 3){
-            z0 = isvalidmove(b, turn, x0, y0, x0+1, y0);
-            if(z0 == 1){
-              movement(b, turn, x0, y0, x0+1, y0);
-              breaker = 1;
-            }
-            else if(z0 == 0){
-              printf("\nincorrect input try again\n");
-            }
-          }
-        }
-        else if(turn == 1){
-          if(a0 == 1){
-            z0 = isvalidmove(b, turn, x0, y0, x0, y0-1);
-            if(z0 == 1){
-              movement(b, turn, x0, y0, x0, y0-1);
-              breaker = 1;
-            }
-            else if(z0 == 0){
-              printf("\nincorrect input try again\n");
-            }
-          }
-          else if(a0 == 2){
-            z0 = isvalidmove(b, turn, x0, y0, x0-1, y0);
-            if(z0 == 1){
-              movement(b, turn, x0, y0, x0-1, y0);
-              breaker = 1;
-            }
-            else if(z0 == 0){
-              printf("\nincorrect input try again\n");
-            }
-          }
-          else if(a0 == 3){
-            z0 = isvalidmove(b, turn, x0, y0, x0+1, y0);
-            if(z0 == 1){
-              movement(b, turn, x0, y0, x0+1, y0);
-              breaker = 1;
-            }
-            else if(z0 == 0){
-              printf("\nincorrect input try again\n");
-            }
-          }
-        }
-    }
 }
 void moveui2(char *b, int turn){
   int x0;
@@ -725,30 +622,6 @@ void moveui2(char *b, int turn){
     }
   }
 }
-void eat(char *b, int turn){
-  printf("\n Please enter which piece you want to use\n");
-  int x0;
-  int y0;
-  int x1;
-  int y1;
-  int x2;
-  int y2;
-  printf("X: ");
-  scanf("%d", &x0);
-  printf("\nY: ");
-  scanf("%d", &y0);
-  printf("\nPlease enter which piece will be eaten\n");
-  printf("X: ");
-  scanf("%d", &x1);
-  printf("\nY: ");
-  scanf("%d", &y1);
-  printf("\nPlease enter where you will be after eating\n");
-  printf("X: ");
-  scanf("%d", &x2);
-  printf("\nY: ");
-  scanf("%d", &y2);
-  eating(b, turn, x0, y0, x1, y1, x2, y2);
-}
 int isvalid_eat(char *b, int turn, int x, int y, int direction){
  int n;
  int index0 = 8*y + x;
@@ -786,47 +659,189 @@ int isvalid_eat(char *b, int turn, int x, int y, int direction){
  }
 return n;
 }
-void eatui(char *b, int turn){
+int isvalid_dama_eat(char *b, int turn, int x0, int y0, int x1, int y1, int x2, int y2, int direction){
+  int n;
+  int index0 = (10 * y0) + x0;
+  int index1 = (10 * y1) + x1;
+  int index2 = (10 * y2) + x2;
+  if(turn == 0){
+    if(*(b + index0) == WHITEDAMA){
+      if((*(b + index1) == BLACK) || (*(b + index1) == BLACKDAMA)){
+        if(*(b + index2) == WHITEWOOD){
+          if(direction == 1){
+            if(((index1 - index0) % 8 == 0) && ((index2 - index1) % 8 == 0)){
+              n = 1;
+            }
+            else{
+              n = 0;
+            }
+          }
+          else if(direction == 2){
+            if(((index1 - index0) % 8 == 0) && ((index2 - index1) % 8 == 0)){
+              n = 1;
+            }
+            else{
+              n = 0;
+            }
+          }
+          else if(direction == 3){
+            if((((index0 - index1) < 7) && ((index0 - index2) < 8)) && ((index1 - index2) < 6)){
+              n = 1;
+            }
+            else{
+              n = 0;
+            }
+          }
+          else if(direction == 4){
+            if((((index0 + index1) < 7) && ((index0 + index2) < 8)) && ((index1 + index2) < 6)){
+              n = 1;
+            }
+            else{
+              n = 0;
+            }
+          }
+          else{
+            n = 0;
+          }
+        }
+        else{
+          n = 0;
+        }
+      }
+      else{
+        n = 0;
+      }
+    }
+    else{
+      n = 0;
+    }
+  }
+  else if(turn == 1){
+    if(*(b + index0) == BLACKDAMA){
+      if((*(b + index1) == WHITE) || (*(b + index1) == WHITEDAMA)){
+        if(*(b + index2) == WHITEWOOD){
+          if(direction == 1){
+            if(((index1 - index0) % 8 == 0) && ((index2 - index1) % 8 == 0)){
+              n = 1;
+            }
+            else{
+              n = 0;
+            }
+          }
+          else if(direction == 2){
+            if(((index1 - index0) % 8 == 0) && ((index2 - index1) % 8 == 0)){
+              n = 1;
+            }
+            else{
+              n = 0;
+            }
+          }
+          else if(direction == 3){
+            if((((index0 - index1) < 7) && ((index0 - index2) < 8)) && ((index1 - index2) < 6)){
+              n = 1;
+            }
+            else{
+              n = 0;
+            }
+          }
+          else if(direction == 4){
+            if((((index0 + index1) < 7) && ((index0 + index2) < 8)) && ((index1 + index2) < 6)){
+              n = 1;
+            }
+            else{
+              n = 0;
+            }
+          }
+          else{
+            n = 0;
+          }
+        }
+        else{
+          n = 0;
+        }
+      }
+      else{
+        n = 0;
+      }
+    }
+    else{
+      n = 0;
+    }
+  }
+  return n;
+}
+void eatui2(char *b, int turn){
   int x0;
   int y0;
   int breaker = 0;
   int a;
   int z;
+  int index0;
   while(breaker != 1){
     printf("\n Please enter which piece you want to use\n");
     printf("X: ");
     scanf("%d", &x0);
     printf("\nY: ");
     scanf("%d", &y0);
-    printf("\nPlease enter which direction you eat\n");
-    printf("[1]FOWARD\n[2]LEFT\n[3]RIGHT\n");
-    scanf("%d", &a);
-    z = isvalid_eat(b, turn, x0, y0, a);
-    if(z == 1){
-      if(a == 1){
-        //foward
-        if(turn == 0){
-          eating(b, turn, x0, y0, x0, y0+1, x0, y0+2);
+    index0 = (10 * y0) + x0;
+    if((*(b + index0) == WHITE) || (*(b + index0) == BLACK)){
+      printf("\nPlease enter which direction you eat\n");
+      printf("[1]FOWARD\n[2]LEFT\n[3]RIGHT\n");
+      scanf("%d", &a);
+      z = isvalid_eat(b, turn, x0, y0, a);
+      if(z == 1){
+        if(a == 1){
+          //foward
+          if(turn == 0){
+            eating(b, turn, x0, y0, x0, y0+1, x0, y0+2);
+            breaker = 1;
+          }
+          else if(turn == 1){
+            eating(b, turn, x0, y0, x0, y0-1, x0, y0-2);
+            breaker = 1;
+          }
+        }
+        else if(a == 2){
+          //left
+          eating(b, turn, x0, y0, x0-1, y0, x0-2, y0);
           breaker = 1;
         }
-        else if(turn == 1){
-          eating(b, turn, x0, y0, x0, y0-1, x0, y0-2);
+        else if(a == 3){
+          //right
+          eating(b, turn, x0, y0, x0+1, y0, x0+2, y0);
           breaker = 1;
         }
       }
-      else if(a == 2){
-        //left
-        eating(b, turn, x0, y0, x0-1, y0, x0-2, y0);
-        breaker = 1;
-      }
-      else if(a == 3){
-        //right
-        eating(b, turn, x0, y0, x0+1, y0, x0+2, y0);
-        breaker = 1;
+      else if(z == 0){
+        printf("\nYou cant eat like that\n");
       }
     }
-    else if(z == 0){
-      printf("\nYou cant eat like that\n");
+    else if((*(b + index0) == WHITEDAMA) || (*(b + index0) == BLACKDAMA)){
+      int x1, y1, z1, x2, y2, direction;
+      printf("\nPlease enter eating direction\n");
+      printf("\n[1] NORTH\n");
+      printf("\n[2] SOUTH\n");
+      printf("\n[3] WEST\n");
+      printf("\n[4] EAST\n");
+      scanf("%d", &direction);
+      printf("\nPlease enter which piece you wanna eat\n");
+      printf("X: ");
+      scanf("%d", &x1);
+      printf("\nY: ");
+      scanf("%d", &y1);
+      printf("\nPlease enter where you will be after eating\n");
+      printf("X: ");
+      scanf("%d", &x2);
+      printf("\nY: ");
+      scanf("%d", &y2);
+      z1 = isvalid_dama_eat(b, turn, x0, y0, x1, y1, x2, y2, direction);
+      if(z1 == 1){
+        eating(b, turn, x0, y0, x1, y1, x2, y2);
+        breaker = 1;
+      }
+      else if(z1 == 0){
+        printf("\n invalid input please try again\n");
+      }
     }
   }
 }
@@ -874,7 +889,7 @@ void game_engine(char *b, int turn){
           printf("\nBLACKS TURN\n");
         }
         printf("You can eat \n");
-        eatui(b, turn);
+        eatui2(b, turn);
         if(caneat(b, turn) == 0){
           if(turn == 0){
             turn = 1;
